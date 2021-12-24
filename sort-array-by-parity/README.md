@@ -1,3 +1,4 @@
+[Discussion Post (created on 24/11/2021 at 22:31)](https://leetcode.com/problems/sort-array-by-parity/discuss/1645093/Simple-4-lines-Code-C%2B%2B)  
 <h2>905. Sort Array By Parity</h2><h3>Easy</h3><hr><div><p>Given an integer array <code>nums</code>, move all the even integers at the beginning of the array followed by all the odd integers.</p>
 
 <p>Return <em><strong>any array</strong> that satisfies this condition</em>.</p>
