@@ -1,24 +1,45 @@
 class Solution {
 public:
-    int msb(int n){
-        int x=0;
-        while(n){
-            x++;
-            n/=2;
+   int msb (int n )
+ {
+      int nx = 0 ; 
+        while (n)
+        {
+            nx++;
+             n/=2;
+
+            /* code */
         }
-        return x-1;
-    }
+        
+         return nx-1;
+ }
+int  rangeBitwiseAnd(int m , int n )
+{
+    
+     if(m==n)
+     {
+          return m ; 
+     }
+     int ans =0;
+      while (m && n )
+      {
+            int j = msb(m);
+      int k = msb(n);
+      if(j!=k)
+      {
+           break;
+      }
+    
+        ans+=(1<< j );
+         m-=(1<<j);
+         n-=(1<<k);
+            
+      
    
-    int rangeBitwiseAnd(int a, int b) {
-       int ans=0;
-        while(a && b){
-            int msb_a=msb(a);
-            int msb_b=msb(b);
-            if(msb_a!=msb_b) break;
-            ans+=(1<<msb_a);
-            a-=(1<<msb_a);
-            b-=(1<<msb_b);
-        }
-        return ans;
-    }
+      
+
+      }
+        return ans ; 
+      
+}
 };
