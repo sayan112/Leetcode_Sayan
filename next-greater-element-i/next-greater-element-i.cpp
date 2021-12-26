@@ -1,51 +1,55 @@
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
-        // 1 3 4 2 
-        //     4 1 2 
-      
-//              O(N^3)
-            
-        
-     vector<int>lo;
-          for(auto elem : nums1)
-          {
-
-      
-          for (int i = 0; i < nums2.size(); i++)
-          {
-             if(elem == nums2[i] )
-             {
-                   bool f = false;
-               
-                 int h =i; 
-                  for (int k =h ; k <nums2.size(); k++)
-                  {
-                         if(nums2[h]<nums2[k])
-                         {
-                                f= true;
-                             lo.push_back(nums2[k]);
-                             break;
-                         }
-                  }
- if(f== false)
-               {
-                   lo.push_back(-1);
-               }
-                  
-             }
-          }
-              
+//      Input: nums1 = [4,1,2], nums2 = [1,3,4,2]
+// Output: [-1,3,-1]
        
+        
+//              [1,3,4,2]
+//  newstore    [3, 4 ,-1,-1 ]
+        
+//         [        ,3,4 ]
+//        1 [ ]
+        
+        
+        
+         int newstore[nums2.size()];
+ stack<int>mpst;
+  mpst.push(nums2[nums2.size()-1]);
+  newstore[nums2.size()-1]=-1;
+   for (int i = nums2.size()-2; i >=0 ; i--)
+   {
+       while ( mpst.size()>0 && nums2[i] >=mpst.top() )
+       {
+            mpst.pop();
+       }
+        if(mpst.size()==0)
+        {
+             newstore[i]=-1;
+        }
+        else
+        {
+            newstore[i]=mpst.top();
+        }
 
-                }
-               
-           for(auto elem : lo)
-           {
-               cout << elem << " ";
-           }
-          
-          cout <<endl;
-               return lo;
+          mpst.push(nums2[i]);
+       
+   }
+    
+ unordered_map<int,int>mp;
+    for (int i = 0; i < nums2.size(); i++)
+    {
+        mp[nums2[i]]= newstore[i];
+    }
+     vector<int>f;
+      for ( int i = 0; i <  nums1.size(); i++)
+      {
+          auto it = mp.find(nums1[i]);
+           f.push_back(it->second );
+      }
+   
+
+ return f;
+
     }
 };
