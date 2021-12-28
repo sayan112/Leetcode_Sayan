@@ -2,14 +2,26 @@ class Solution {
 public:
 
 vector<int> sortArrayByParity(vector<int>& A) {
-    int j=0;
-    for(int i=0;i<A.size();i++)
-	{
-        if(A[i]%2==0)
-		{
-            swap(A[i],A[j]);
-            j++;
-		}
-	}
-    return A;
+     vector<int>v;
+    
+      for(auto elem : A)
+      {
+           if(elem % 2==0)
+           {
+               v.push_back(elem);
+           }
+      }
+      for(auto elem : A)
+      {
+           if(elem % 2!=0)
+           {
+               v.push_back(elem);
+           }
+      }
+     return v;
+    
+    
+    
+    
+    
 }};
