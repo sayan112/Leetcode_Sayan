@@ -1,19 +1,54 @@
 class Solution {
 public:
     vector<int> diStringMatch(string s) {
-        vector <int> ans;
-        int start = 0,end = s.length();
-        for(int i=0;i<s.length();i++){
-            if(s[i] == 'D'){
-                ans.push_back(end);
-                end--;
-            }
-            else{
-                ans.push_back(start);
-                start++;
-            }
-        }
-        ans.push_back(start);
-        return ans;
+    
+int need = s.size();
+ vector<int>proans;
+ for (int i = 0; i < need; i++)
+
+ { proans.push_back(i);
+
+     
+ }
+ 
+int In=0;
+ int Dn=need;
+   vector<int>ans;
+   for (int i = 0; i < s.size(); i++)
+   {
+         if(s[i]=='I')
+         {
+             ans.push_back(In);
+              In++;
+               if(i+1==s.size())
+               {
+                      ans.push_back(In);
+               }
+         }
+         else
+         {
+              ans.push_back(Dn);
+              Dn--;
+               if(i+1==s.size())
+               {
+                      ans.push_back(Dn);
+               }
+         }
+         
+   }
+
+       
+       
+        
+
+
+     
+ return ans ;
+
+   
+
+
+
+    
     }
 };
