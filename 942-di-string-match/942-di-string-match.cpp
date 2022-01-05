@@ -1,18 +1,9 @@
 class Solution {
 public:
     vector<int> diStringMatch(string s) {
-    
-int need = s.size();
- vector<int>proans;
- for (int i = 0; i < need; i++)
-
- { proans.push_back(i);
-
-     
- }
  
 int In=0;
- int Dn=need;
+ int Dn= s.size();
    vector<int>ans;
    for (int i = 0; i < s.size(); i++)
    {
@@ -38,9 +29,7 @@ int In=0;
    }
 
        
-       
-        
-
+      
 
      
  return ans ;
