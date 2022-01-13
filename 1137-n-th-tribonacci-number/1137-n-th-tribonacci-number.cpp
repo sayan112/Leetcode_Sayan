@@ -1,23 +1,28 @@
 class Solution {
 public:
-
+ unordered_map<int,int>mp;
 int tribonacci(int n) {
-    
-    int arr[38];
-    
-    arr[0] = 0;
-    arr[1] = 1;
-    arr[2] = 1;
-    
-    if(n <= 2)
-        return arr[n];
-    
-    for(int i = 3; i<= n; i++)
+          
+      if(n==1 || n==0)
+        {
+            return n  ;
+        }
+    if(n==2)
     {
-        arr[i] = arr[i-1] +  arr[i-2] + arr[i-3];
+        return 1 ;
+        
     }
+      
+              int currentKey = n;
+        
+        if(mp.find(currentKey)!=mp.end()){
+            return mp[currentKey];
+        }
     
-    return arr[n];
+      
+    int ans= tribonacci(n-1)+tribonacci(n-2)+tribonacci(n-3);
+      mp[currentKey] =  ans ;
+        return ans ;
     
 }
 };
