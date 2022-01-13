@@ -12,16 +12,14 @@ int tribonacci(int n) {
         return 1 ;
         
     }
-      
-              int currentKey = n;
         
-        if(mp.find(currentKey)!=mp.end()){
-            return mp[currentKey];
+        if(mp.find(n)!=mp.end()){
+            return mp[n];
         }
     
       
     int ans= tribonacci(n-1)+tribonacci(n-2)+tribonacci(n-3);
-      mp[currentKey] =  ans ;
+      mp[n] =  ans ;
         return ans ;
     
 }
