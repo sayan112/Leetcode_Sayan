@@ -3,11 +3,11 @@ public:
  unordered_map<int,int>mp;
 int tribonacci(int n) {
           
-      if(n==1 || n==0)
+      if (n==0)
         {
-            return n  ;
+            return 0  ;
         }
-    if(n==2)
+    else if  (n==2 || n==1)
     {
         return 1 ;
         
