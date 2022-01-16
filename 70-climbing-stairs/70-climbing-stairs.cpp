@@ -11,19 +11,18 @@ public:
          {
              return 0;
          }
-         int key=  currentstair ;
          
-         if(mp.find( key )!= mp.end())
+         if(mp.find( currentstair )!= mp.end())
          {
-             return mp[key ];
+             return mp[ currentstair ];
          }
         
     int chalo1=  totalWays(n,currentstair+1,mp);
         int chalo2= totalWays(n,currentstair+2,mp);
-         mp[key]   = chalo1+chalo2;
+         mp[currentstair]   = chalo1+chalo2;
      
         
-        return    mp[key]   ; 
+        return    mp[currentstair]   ; 
      }
     
     
