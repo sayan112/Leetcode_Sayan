@@ -7,7 +7,7 @@ public:
         }
         
         if(idx > cost.size()){
-            return 0;
+            return 10000;
         }
                   
         int currentKey = idx;
@@ -19,6 +19,7 @@ public:
          
               int onestep= miniCost(cost, idx+1,mp)+cost[idx];
               int secondstep= miniCost(cost, idx+2,mp)+ cost[idx];
+          cout <<onestep <<" " << secondstep << endl;
          int ans =  min( onestep, secondstep);
          mp[currentKey]=ans;
           return ans;
