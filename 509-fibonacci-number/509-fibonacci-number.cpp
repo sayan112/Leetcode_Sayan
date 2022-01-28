@@ -1,17 +1,23 @@
 class Solution {
 public:
-    int fib(int n) {
-        if(n==1 || n==0)
+    int nthfib( unordered_map<int,int>&mp,int n )
+    {
+        if(n<=1)
         {
-            return n  ;
+            return n ; 
         }
-          unordered_map<int,int>mp;
-              int currentKey = n;
-        
-        if(mp.find(currentKey)!=mp.end()){
-            return mp[currentKey];
-        }
-     int ans  = fib(n-1)+fib(n-2); 
-     return ans ;
+        int curkey=n;
+         if(mp.find(curkey)!=mp.end())
+         {
+              return mp[curkey];
+         }
+         int onestep= nthfib(mp,n-1);
+        int twostep= nthfib(mp,n-2);
+    mp[curkey ]= onestep+twostep;
+         return mp[curkey];
+    }
+    int fib(int n) {
+        unordered_map<int,int>mp;
+       return   nthfib(mp,n);
     }
 };
