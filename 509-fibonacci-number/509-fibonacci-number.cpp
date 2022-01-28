@@ -5,6 +5,12 @@ public:
         {
             return n  ;
         }
+          unordered_map<int,int>mp;
+              int currentKey = n;
+        
+        if(mp.find(currentKey)!=mp.end()){
+            return mp[currentKey];
+        }
      int ans  = fib(n-1)+fib(n-2); 
      return ans ;
     }
