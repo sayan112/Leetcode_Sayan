@@ -1,12 +1,20 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        int xori =0 ; 
-             for (int i = 0; i < nums.size() ; i++)
-     {
-          xori= xori^ nums[i] ; 
-     
-     }
-        return xori ;
+      unordered_map<int,int>mp;
+         for(auto elem: nums)
+         {
+             mp[elem]++;
+         }
+        
+               for(auto elem: mp)
+         {
+             if(elem.second==1)
+             {
+                  return elem.first;
+             }
+         }
+         return 0;
+         
     }
 };
