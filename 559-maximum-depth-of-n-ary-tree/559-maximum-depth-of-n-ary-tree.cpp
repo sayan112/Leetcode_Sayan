@@ -18,6 +18,10 @@ public:
 };
 */
 
+// in binary tree we return  1 + max( left_child_depth, right_child_depth)
+// here i am doing same
+// return 1 + max( child1_depth , child2_depth, child3_depth ........)
+
 class Solution {
 public:
     
