@@ -26,7 +26,7 @@ public:
          
      }
     bool isUnivalTree(TreeNode* root) {
-         cout << root <<" " <<  root->val;
+       
      return solve(root , root->val);
     }
 };
