@@ -32,13 +32,16 @@ public:
         else if(b>a) {
               while(b!=0 )
             {
+                  
                 s+='b';
                        b--;
+//                   cout << b << " " << a << endl;
                 
                 if(b>a)
                 {
                   s+='b';
                        b--;
+                    
                 }
                
     if(a!=0)
