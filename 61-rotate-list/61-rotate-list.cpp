@@ -16,31 +16,25 @@ public:
              return head;
         }
         ListNode * temp= head;
-        int l=0;
-         while(temp)
+        int l=1;
+         while(temp->next)
          {
              temp=temp->next;
              l++;
          }
-         int rotate= k%l;
+        temp->next=head;
+         int rotate= l-k%l;
+        
         
          for(int i=0; i<rotate;i++)
          {
-             temp= head;
-             while(temp->next->next!=NULL)
-             {
-                 temp=temp->next;
-                 
-             }
-             cout << temp->next->val;
-             temp->next->next= head;
-             head=temp->next;
-             temp->next=NULL;
-             
-             
+            temp=temp->next;
              
              
          }
+        head=temp->next;
+        temp->next=NULL;
+        
         
         return head;
         
