@@ -5,11 +5,6 @@ public:
          vector<int>arr=p;
          sort(arr.begin(),arr.end());
          vector<int>k;
-         // for ( auto elem : arr)
-         // {
-         //      cout << elem <<" ";
-         // }
-         // cout << endl;
          int count =0;
          for(int i =0; i< arr.size();i++)
          {
