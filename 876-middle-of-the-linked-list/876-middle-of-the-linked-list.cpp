@@ -10,32 +10,50 @@
  */
 class Solution {
 public:
-     int findsize(ListNode* head)
-     {
-          ListNode* list = head;
-          int count =0;
-          while(list)
-          {
-               list = list->next;
-               count++;
+//      int findsize(ListNode* head)
+//      {
+//           ListNode* list = head;
+//           int count =0;
+//           while(list)
+//           {
+//                list = list->next;
+//                count++;
                
-          }
-          return count ; 
-     }
+//           }
+//           return count ; 
+//      }
     ListNode* middleNode(ListNode* head) {
       
-        int size = findsize(head);
-         int middle = size/2;
-          ListNode* list= head;
-        int count =0;
-         while(count!=middle)
+//         int size = findsize(head);
+//          int middle = size/2;
+//           ListNode* list= head;
+//         int count =0;
+//          while(count!=middle)
+//          {
+//              list= list->next;
+//              count++;
+             
+//          }
+//          return list ;
+               ListNode* slowpointer = head;
+                  ListNode* fastpointer =head;
+        
+         while(fastpointer!=NULL)
          {
-             list= list->next;
-             count++;
+           
+              if(fastpointer->next==NULL)
+              {
+                   return slowpointer;
+              }
+               slowpointer= slowpointer->next;
+             fastpointer= fastpointer->next->next;
+              
              
          }
-         return list ;
-          
+         return slowpointer;
+        
+         
+        
          
         
         
