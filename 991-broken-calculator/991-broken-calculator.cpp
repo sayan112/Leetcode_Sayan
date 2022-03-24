@@ -1,22 +1,25 @@
 class Solution {
 public:
-    int brokenCalc(int startValue, int target) {
-        
-		// res for counting number of operation
-        int res = 0;
-        
-        while(target > startValue)
+    int brokenCalc(int s, int t) {
+        if(s>=t)
         {
-			// if target is odd we will make it even
-            if(target % 2)
-                ++target;
-			// if target is even divide by 2
-            else
-                target /= 2;
-            
-            ++res;
+            return s-t;
         }
-        return res  + startValue - target;
+        else{
+            int count =0;
+            while(s<t)
+            {
+                count++;
+             if(t%2==0)
+             {
+                 t=t/2;
+             }
+                else{
+                    t++;
+                }
+            }
+            
+            return (s-t)+count;
+        }
     }
-	// for github repository link go to my profile.
 };
