@@ -1,25 +1,36 @@
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
-      int count =0;
-         for(auto elem : nums)
+int start =0;
+        int end =nums.size();
+         if(nums.size()==1)
          {
-             if(elem!=target)
+             if(nums[0]!=target)
              {
-                 count++;
+                  return -1;
              }
              else{
-                 break;
+                 return 0;
              }
+                 
          }
-        cout << count <<nums.size();
-         if(count==nums.size())
+         while(start<=end)
          {
-              return -1;
+            int middle= end+(start-end )/2;
+             if(nums[middle]==target)
+             {
+                 return middle;
+             }
+             else if(nums[middle]>target){
+                 end=middle-1;
+                 
+             }
+             else{
+                 start=middle+1;
+             }
+           
          }
-         return count;
-        
-        
+        return -1;
         
     }
 };
