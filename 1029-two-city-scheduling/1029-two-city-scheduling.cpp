@@ -1,19 +1,55 @@
-/*
-sort by difference in costs of a and b 
-send the first n to a, rest to b 
-*/
-
-bool comparator ( vector <int> &a, vector <int> &b ){
-    if( a[0] - a[1]  < b[0] - b[1]) return true; // sort by difference in cost
-    else return false;
-}
-
 class Solution {
-public:   
+public:
     int twoCitySchedCost(vector<vector<int>>& costs) {
-        sort(costs.begin(), costs.end(), comparator);
-        int n = costs.size()/2, ans = 0;
-        for( int i = 0 ; i < n ; i++ ) ans += costs[i][0] + costs[i+n][1]; // send the first to a , rest to b
-        return ans;
+        int need=0;
+     
+         for(int i=0; i < costs.size();i++)
+         {
+            
+                   need+=costs[i][0];
+
+             
+         }
+        vector<int>p;
+        
+           for(int i=0; i < costs.size();i++)
+         {
+            p.push_back(costs[i][1]-costs[i][0]);
+              
+             
+         }
+        
+        for(auto elem : p)
+        {
+            cout <<elem<<" ";
+        }
+        
+        sort(p.begin(),p.end());
+    
+int n = costs.size()/2;
+        int ct=0;
+    
+      
+            for(auto elem : p)
+            {
+                   ct++;
+                         need+=elem;
+                if(ct==n)
+                {
+                     return need;
+                }
+                
+             
+            }
+
+    
+        
+        return need;
+        
+        
+        
+        
+        
+        
     }
 };
