@@ -19,7 +19,7 @@ public:
                 max_heap.pop();
             n--;
             n--;
-             if(first-second>=1)
+             if(first-second>0)
              {
                  int need = first- second;
                  max_heap.push(need);
