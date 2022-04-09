@@ -24,12 +24,12 @@ public:
          }
         
         vector<int>ans;
-        int count=0;
+      
          for(auto elem:pairfeq )
          {
-              count++;
+             k--;
               ans.push_back(elem.first);
-             if(count==k)
+             if(k==0)
              {
                   return ans;
              }
