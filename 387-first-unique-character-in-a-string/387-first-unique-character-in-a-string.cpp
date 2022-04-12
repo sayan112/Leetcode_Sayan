@@ -1,26 +1,20 @@
 class Solution {
 public:
     int firstUniqChar(string s) {
+        unordered_map<int,int>mp;
         
          for(int i=0; i <s.size();i++)
          {
-             bool need=true;
-                for(int j=0; j <s.size();j++)
+        mp[s[i]]++;
+    }
+           
+         for(int i=0; i <s.size();i++)
          {
-             if(i!=j)
+             if(mp[s[i]]==1)
              {
-                 if(s[i]==s[j])
-                 {
-                     need=false;
-                     break;
-                 }
+                 return i;
              }
          }
-              if(need)
-              {
-               return i;   
-              }
-         }
-         return -1;
+        return -1;
     }
 };
