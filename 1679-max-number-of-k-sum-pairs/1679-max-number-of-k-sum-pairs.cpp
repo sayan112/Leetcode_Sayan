@@ -2,10 +2,6 @@ class Solution {
 public:
     int maxOperations(vector<int>& nums, int k) {
         unordered_map<int,int>mp;
-         for(auto elem : nums)
-         {
-           
-         }
         int count =0;
          for(auto elem : nums)
          {
@@ -13,8 +9,6 @@ public:
           int need = k-elem;
               if(mp.find(need)!= mp.end())
               {
-                  
-                  cout << need <<" "<< elem <<endl;
                   count++;
                   mp[elem]--;
                   mp[need]--;
@@ -30,9 +24,9 @@ public:
                   }
               }
              else{
-                  mp[elem]++;
-                 
+                    mp[elem]++; 
              }
+          
              
          }
          return count;
