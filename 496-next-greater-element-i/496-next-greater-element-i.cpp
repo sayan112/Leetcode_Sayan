@@ -1,45 +1,49 @@
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
-        // [1,3,4,2]
-        // ans -> [3,4,-1,-1]
-        vector<int>ans;
-        for(int i=0;i<nums2.size();i++)
-        {
-              bool check = false;
-              for(int j=i;j<nums2.size();j++)
-        {
-                
-            if(nums2[i]<nums2[j])
-            {
-                ans.push_back(nums2[j]);
-                check=true;
-                break;
-            }
-                 
-                  
-        }
-             if(!check)
-                  {
-                      ans.push_back(-1);
-                  }
-        }
-        vector<int>ans1;
-         for(auto elem : nums1)
+        
+        unordered_map<int,int>mp;
+        
+        stack<int>st;
+        
+         for(int i=nums2.size()-1 ;i>=0;i--)
          {
-             for(int i=0; i<nums2.size();i++ )
-             {
-                 if(nums2[i]==elem)
+              if(st.size()==0)
+              {
+                 mp[nums2[i]]=-1;
+              }
+             else if(st.size()>0 &&  st.top()>nums2[i] )
                  {
-                     ans1.push_back(ans[i]);
+                  mp[nums2[i]]=st.top();
+                   
                  }
-             }
+             else {
+                     
+                     while( st.size()>0  && st.top()<=nums2[i])
+                     {
+                         st.pop();
+                         
+                     }
+                 
+                     if( st.size()==0)
+                     {
+                          mp[nums2[i]]=-1;
+                           
+                     }
+                     else{
+                           mp[nums2[i]]=st.top();
+                         
+                     }
+                     
+                 }
+               st.push(nums2[i]);
          }
-        
-        
-         return ans1 ; 
-        
-        
-        
+        vector<int>ans;
+          for(auto elem : nums1)
+          {
+             ans.push_back(mp[elem]);
+          }
+         return ans ; 
+                 
     }
 };
