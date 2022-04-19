@@ -14,7 +14,6 @@ public:
         
          for(auto elem : mp)
          {
-             cout << elem.first<<" ";
            p.push_back(elem.second);
           
          }
