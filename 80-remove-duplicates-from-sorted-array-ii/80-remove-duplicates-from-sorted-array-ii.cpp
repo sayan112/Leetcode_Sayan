@@ -6,15 +6,11 @@ public:
         for(auto elem : nums)
         {
             mp[elem]++;
-            cout<< elem;
+       
         }
         
               nums.clear();
-           for(auto elem : nums)
-        {
-         
-            cout<< elem;
-        }
+  
         
         int size=0;
           for(auto elem : mp)
@@ -36,18 +32,10 @@ public:
                   size++;
                      size++;
               }
-                     for(auto elem : nums)
-        {
-         
-            cout<< elem <<endl;
-                         
-        }
-              cout <<endl;
-          
-        }
-        nums.push_back(0);
-        cout << size;
-         return size ;
+      
         
+        
+    }
+         return size ;
     }
 };
