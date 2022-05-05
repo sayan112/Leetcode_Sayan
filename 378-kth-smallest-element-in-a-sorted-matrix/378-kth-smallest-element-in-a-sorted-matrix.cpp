@@ -9,13 +9,18 @@ public:
              vec.push_back(matrix[i][j]);
          } 
          }
+        
+   
+         priority_queue <int> pq;
          for(auto elem : vec)
          {
-             cout << elem << " "; 
+              pq.push(elem);
+              if(pq.size()>k)
+              {
+                  pq.pop();
+              }
          }
-     sort(vec.begin(),vec.end());
-       
-         return vec[k-1];
+         return pq.top();
         
     }
 };
