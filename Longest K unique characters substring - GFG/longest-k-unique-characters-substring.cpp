@@ -23,7 +23,7 @@ class Solution{
                 }
                 else if (k==mp.size()){
                      
-                    maxi=max(maxi,j-i+1);
+                    maxi=max(maxi,(j-i+1));
                     j++;
                 }
                 else{
