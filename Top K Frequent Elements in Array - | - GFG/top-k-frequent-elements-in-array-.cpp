@@ -5,6 +5,7 @@ using namespace std;
  // } Driver Code Ends
 class Solution {
   public:
+  typedef pair<int, int> pi;
     vector<int> topK(vector<int>& nums, int k) {
         // Code here
          unordered_map<int,int>mp;
@@ -13,24 +14,24 @@ class Solution {
               mp[elem]++;
               
           }
-           priority_queue<pair<int,int>>pq;
-          
+        priority_queue<pi, vector<pi>, greater<pi> > pq;
            for(auto elem : mp)
            {
                 pq.push({elem.second,elem.first});
-                // if(pq.size()>k)
-                // {
-                //     pq.pop();
-                // }
+                if(pq.size()>k)
+                {
+                    pq.pop();
+                }
            }
             vector<int>need;
              
-         while(k--)
+         while(pq.size()!=0)
          {
              auto elem = pq.top();
              need.push_back(elem.second);
              pq.pop();
          }
+          reverse(need.begin(),need.end());
           return need;
     }
 };
