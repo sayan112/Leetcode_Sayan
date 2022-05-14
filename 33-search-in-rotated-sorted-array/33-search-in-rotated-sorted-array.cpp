@@ -8,7 +8,7 @@ class Solution
             int end = nums.size() - 1;
             if (nums[end] >= nums[start])
             {
-                return nums[0];
+                return 0;
             }
             else
             {
@@ -56,16 +56,21 @@ class Solution
     int search(vector<int> &nums, int target)
     {
         int min = findMin(nums);
-
-        int need1 = binearsearch(nums, target, 0, min - 1);
-        int need2 = binearsearch(nums, target, min, nums.size() - 1);
-        if (need1 == -1 && need2 != -1)
+        cout <<min;
+        if(min==0)
         {
-            return need2;
+            return binearsearch(nums, target, 0,nums.size() - 1 );
         }
-        else if (need2 == -1 && need1 != -1)
+        if (target >= nums[0])
         {
+            int need1 = binearsearch(nums, target, 0, min - 1);
             return need1;
+        }
+        else
+        {
+
+            int need2 = binearsearch(nums, target, min, nums.size() - 1);
+            return need2;
         }
 
         return -1;
