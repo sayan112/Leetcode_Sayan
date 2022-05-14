@@ -56,7 +56,6 @@ class Solution
     int search(vector<int> &nums, int target)
     {
         int min = findMin(nums);
-        cout <<min;
         if(min==0)
         {
             return binearsearch(nums, target, 0,nums.size() - 1 );
