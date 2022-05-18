@@ -13,6 +13,9 @@ public:
         {
             return fruits.size();
         }
+        else{
+            
+      
         
         unordered_map<int,int>mp;
          while(j<fruits.size())
@@ -43,5 +46,6 @@ public:
              
          }
          return ans ;
+              }
     }
 };
