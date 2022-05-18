@@ -4,30 +4,15 @@ public:
         int i=0;
          int j=0;
         int ans=0;
-          unordered_map<int,int>mp1;
-         for(auto elem : fruits)
-         {
-             mp1[elem]++;
-         }
-        if(mp1.size()<=2)
-        {
-            return fruits.size();
-        }
-        else{
-            
       
         
         unordered_map<int,int>mp;
          while(j<fruits.size())
          {
                                   mp[fruits[j]]++;
-             if(mp.size()<2)
+             if(mp.size()<=2)
              {
-                 j++;
-             }
-             else if(mp.size()==2)
-             {
-                 ans=max(ans, (j-i+1));
+                ans=max(ans, (j-i+1));
                  j++;
              }
              else if (mp.size()>2)
@@ -47,5 +32,5 @@ public:
          }
          return ans ;
               }
-    }
+    
 };
