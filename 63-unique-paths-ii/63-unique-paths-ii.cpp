@@ -1,42 +1,13 @@
 class Solution {
 public:
-         int need ( int  m,int n, int row, int col,unordered_map<string ,int>&mp,vector<vector<int>>& obstacleGrid)
-     {
-        
-          if(row>=m || col >=n)
-          {
-               return 0 ; 
-          }
-                if(obstacleGrid[row][col]==1)
-             
-             {
-                   return 0 ; 
-              }
-           
-          if(row==m-1 && col ==n-1)
-          {
-               return 1 ; 
-          }
-             
-      
-      string currentKey = to_string(row) + "_" + to_string(col);
-            
-        if(mp.find(currentKey)!=mp.end()){
-           return mp[currentKey];
-        }
-         
-          int need1 = need(m,n,row+1,col,mp,obstacleGrid);
-          int need2 = need(m,n, row,col+1,mp,obstacleGrid);
-                      mp[currentKey]=need1+need2;
-            return mp[currentKey];
-         
-         
-     }
-    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
-         int m = obstacleGrid.size();
-         int n= obstacleGrid[0].size();
-        unordered_map<string ,int>mp;
-          return need (m,n,0,0,mp,obstacleGrid)  ; 
-
+    int uniquePathsWithObstacles(vector<vector<int> > &obstacleGrid) {
+        int m = obstacleGrid.size() , n = obstacleGrid[0].size();
+        vector<vector<int>> dp(m+1,vector<int>(n+1,0));
+        dp[0][1] = 1;
+        for(int i = 1 ; i <= m ; ++i)
+            for(int j = 1 ; j <= n ; ++j)
+                if(!obstacleGrid[i-1][j-1])
+                    dp[i][j] = dp[i-1][j]+dp[i][j-1];
+        return dp[m][n];
     }
 };
