@@ -11,52 +11,48 @@
  */
 class Solution {
 public:
-     bool real= false;
-    void   sum(TreeNode* root, int targetSum , int val )
+     bool pathsum(TreeNode* root, int targetSum,int sum)
      {
-          if (root==NULL)
+         if(root==NULL)
+         {
+              return false;
+         }
+         //  if(((sum+root->val)==targetSum) && (root->left==NULL && root->right==NULL))
+         //  {
+         //      return true;
+         //  }
+         // else{
+         //     return false;
+         // }
+          if((root->left==NULL && root->right==NULL))
           {
-               return ;
-          }
-             
-           val+= root->val;
-          
-              if (root->left == NULL && root->right==NULL )
-              {
-                   int ans = val;
-                  cout << ans <<" "<< targetSum << endl;
-                   if(ans == targetSum)
-                   {
-                        real= true;
-                        return ;
-                       
-                   }
-                 
-                  
-              
+               sum+=root->val;
+               if(sum==targetSum)
+               {
+                    return true;
+               }
+              else{
+                   return false;
               }
-             
-                  
+              
+          }
          
-         sum(root->left , targetSum  ,  val);
-          sum(root->right , targetSum , val);
-    
-         
-             
+          bool leftcall = pathsum( root->left, targetSum, sum+root->val);
+         bool rightcall = pathsum( root->right, targetSum,sum+root->val);
+          if(leftcall||rightcall)
+          {
+              return true;
+              
+          }else{
+              
+              return false;
+          }
          
      }
     
     
     bool hasPathSum(TreeNode* root, int targetSum) {
-        
-         if ( root==NULL)
-         {
-              return false;
-         }
-    sum(root , targetSum, 0);
-    
-        
-          return real;
+       return  pathsum(root, targetSum,0); 
         
     }
 };
