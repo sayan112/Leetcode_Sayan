@@ -1,21 +1,21 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-
         
-         int slow =0;
-         int fast =1;
-         while(fast<nums.size())
+unordered_map<int,int>mp;
+         for (auto elem : nums)
          {
-              if(nums[fast]!=nums[slow])
-              {
-                  slow++;
-                   nums[slow]=nums[fast];
-              }
-             fast++;
+             mp[elem]++;
          }
-         return slow+1;
-
+         nums.clear();
+         for(auto elem : mp)
+         {
+             nums.push_back(elem.first);
+         }
+        sort(nums.begin(),nums.end());
+        
+        return mp.size() ;
+        
         
     }
 };
