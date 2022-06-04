@@ -1,7 +1,9 @@
 class Solution {
 public:
     int thirdMax(vector<int>& nums) {
-         unordered_set<int>st;
+   
+       
+           unordered_set<int>st;
          for(auto elem : nums)
          {
              st.insert(elem);
@@ -13,19 +15,24 @@ public:
           nums.push_back(elem);
             
         }
-        
-           sort(nums.begin(),nums.end());
-        if(nums.size()<3)
+             if(nums.size()==1)
         {
-               return nums[nums.size()-1];
-            
+            return nums[0];
         }
+         if(nums.size()==2)
+        {
+            return max(nums[0],nums[1]);
+        }
+priority_queue <int, vector<int>, greater<int> > pq;
+        
         for(auto elem : nums)
         {
-            cout << elem << " ";  
+            pq.push(elem );
+             if(pq.size()>3)
+             {
+                 pq.pop();
+             }
         }
-    
-      
-         return nums[nums.size()-3];
+         return pq.top();
     }
 };
