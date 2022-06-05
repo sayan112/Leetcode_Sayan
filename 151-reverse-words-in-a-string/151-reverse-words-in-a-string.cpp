@@ -1,35 +1,49 @@
-class Solution {
-public:
-    string reverseWords(string s) {
-        
-        stack<string>stack;
-          string need;
-        string  check =" ";
-      for (int i=0; i < s.size();i++)
-      {
-              string word;
-            if(s[i]==' ') continue; //skip spaces
-            while(i<s.size() && s[i]!=' ' ) { //store continuous letters into word
-                word += s[i]; i++;
+class Solution
+{
+    public:
+        string reverseWords(string str)
+        {
+            string need = "";
+            vector<string> str2;
+            for (int i = 0; i < str.size(); i++)
+
+            {
+
+                if (str[i] == ' ')
+                {
+                    if ((need.size() >= 1))
+                    {
+                        if (need[0] != ' ')
+                        {
+                            str2.push_back(need);
+                        }
+                    }
+                    need = "";
+                }
+                else
+                {
+                    need += str[i];
+                }
+                if (i == str.size() - 1)
+                {
+                     if(need !="")
+                     {
+                          str2.push_back(need);
+                     }
+                   
+                }
             }
-            stack.push(word); //push word to the stack
-      }
-        
-        
-         
-          while(stack.size()!=0)
-          {
-              need+=stack.top();
-              if(stack.size()!=1)
-              {
-                     need+=" ";
-              }
-           
-              stack.pop();
-          }
-        return need;
-        
-        
-        
-    }
+
+            string ans;
+            for (int i = str2.size() - 1; i >= 0; i--)
+            {
+                ans += str2[i];
+                if (i != 0)
+                {
+                    ans += ' ';
+                }
+            }
+
+            return ans;
+        }
 };
