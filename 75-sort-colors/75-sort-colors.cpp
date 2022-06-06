@@ -2,32 +2,37 @@ class Solution {
 public:
     void sortColors(vector<int>& nums) {
         
-         vector<int>need;
+      vector<int>need;
+         int count0=0;
+        int count1=0;
+         int count2=0;
          for(auto elem : nums)
          {
               if(elem==0)
               {
-                   need.push_back(elem);
+                  count0++;
               }
+             else if (elem==1){
+                 count1++;
+                  
+             }
+             else{
+                 count2++;
+             }
          }
-           for(auto elem : nums)
+        nums.clear();
+         for(int i=0; i<count0;i++)
          {
-              if(elem==1)
-              {
-                   need.push_back(elem);
-              }
+             nums.push_back(0);
          }
-        
-           for(auto elem : nums)
+          for(int i=0; i<count1;i++)
          {
-              if(elem==2)
-              {
-                   need.push_back(elem);
-              }
+             nums.push_back(1);
          }
-        
-      nums.clear();
-         nums=need;
-        
+          for(int i=0; i<count2;i++)
+         {
+             nums.push_back(2);
+         }
+
     }
 };
