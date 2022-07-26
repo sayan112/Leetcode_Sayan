@@ -12,32 +12,19 @@
 class Solution {
 public:
      int maxi=0;
-    int countheight(TreeNode* node)
+    int    countdiameter(TreeNode* node)
     {
          if(!node)
          {
               return 0 ;
          }
-      int left=  countheight(node->left);
-       int right=  countheight(node->right);
-        return 1+max(left,right);
+      int leftheight=   countdiameter(node->left);
+       int rightheight=   countdiameter(node->right);
+        maxi=max( maxi , (leftheight+rightheight) );
+        
+        return 1+max(leftheight, rightheight);
          
     }
-      void countdiameter(TreeNode* node)
-    {
-         if(!node)
-         {
-              return  ;
-         }
-      int left=  countheight(node->left);
-       int right=  countheight(node->right);
-           maxi=max(maxi , (left+right));
-          
-         countdiameter(node->left);
-          countdiameter(node->right);
-         
-    }
-    
      
     int diameterOfBinaryTree(TreeNode* root) {
         
