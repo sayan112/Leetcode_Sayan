@@ -13,7 +13,7 @@ public:
             vector<string>ans;
   
         unordered_map<string,int>mp;
-           priority_queue<pi,vector<pi>,Comp>pq;
+                  priority_queue <pair<int, string>> pq;
       for(auto elem : words)
       {
           mp[elem]++;
@@ -21,15 +21,20 @@ public:
         
          for(auto elem : mp)
          {
-             pq.push({elem.second,elem.first});
+             pq.push({-elem.second,elem.first});
+             if(pq.size()>k)
+             {
+                 pq.pop();
+             }
          }
-        while(k--)
+        while(pq.size()>0)
         {
             pair<int,string>pi =pq.top();
-        
+        cout << pi.first<<" "<<pi.second;
           ans.push_back(pi.second);
             pq.pop();
         }
+        reverse(ans.begin(),ans.end());
         return ans;
     }
 };
