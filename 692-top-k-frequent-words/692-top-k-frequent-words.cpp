@@ -1,57 +1,35 @@
-  bool cmp(pair<string, int> &a,
-            pair<string, int> &b)
-        { 
-      if(a.second==b.second)
-        return a.first<b.first;
-        return a.second>b.second;
-          
-        }
-bool mycomp(string a, string b){
-	//returns 1 if string a is alphabetically 
-	//less than string b
-	//quite similar to strcmp operation
-	return a<b;
-}
-class Solution
-{
-    
-    public:
-    
-    vector<string> topKFrequent(vector<string> &words, int count)
-    {
-    vector<string>ans;
-    map<string, int>mp;
-        for(auto elem : words)
-        {
-            mp[elem]++;
-        }
-      
-        vector<pair<string, int> > A;
-           for (auto& it : mp) {
-        A.push_back(it);
-    }
-          sort(A.begin(), A.end(), cmp);
-        for(auto elem : A)
-        {
-            cout << elem.first<<" "<<elem.second<<endl;
-        }
+
+class Solution {
+public:
+      struct Comp {
+        bool operator()(const pair<int, string>& lhs, const pair<int, string>& rhs) const {
+            if (lhs.first != rhs.first)
+                return lhs.first < rhs.first;
+            return lhs.second > rhs.second;
+        } //for more info refer Resource#3 mentioned below
+    };
+      typedef pair<int,string> pi;
+    vector<string> topKFrequent(vector<string>& words, int k) {
+            vector<string>ans;
+  
+        unordered_map<string,int>mp;
+           priority_queue<pi,vector<pi>,Comp>pq;
+      for(auto elem : words)
+      {
+          mp[elem]++;
+      }
         
-         for(auto elem : A)
+         for(auto elem : mp)
          {
-             if(count!=0)
-             {
-                   ans.push_back(elem.first);
-                 count--;
-             }
-             else{
-                 break;
-             }
-        
-             
+             pq.push({elem.second,elem.first});
          }
-        // sort(ans.begin(),ans.end(),mycomp);
-     
-         return ans ; 
-         
+        while(k--)
+        {
+            pair<int,string>pi =pq.top();
+        
+          ans.push_back(pi.second);
+            pq.pop();
+        }
+        return ans;
     }
 };
