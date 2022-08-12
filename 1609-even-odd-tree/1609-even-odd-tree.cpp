@@ -1,12 +1,12 @@
 /**
  *Definition for a binary tree node.
  *struct TreeNode {
- *   int val;
- *   TreeNode * left;
- *   TreeNode * right;
- *   TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ *  int val;
+ *  TreeNode * left;
+ *  TreeNode * right;
+ *  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  *};
  */
 class Solution
@@ -42,17 +42,10 @@ class Solution
             }
 
             int check = 0;
-             for(auto elem1: ans )
-             {
-                  for(auto elem : elem1)
-                  {
-                      cout << elem <<" ";
-                  }
-                 cout <<endl;
-             }
+
             for (auto elem1: ans)
             {
- 
+
                 if (check == 0)
                 {
                     check = 1;
@@ -73,17 +66,12 @@ class Solution
                 }
                 else
                 {
-                     for(auto elem : elem1)
-                     {
-                         cout << elem <<" ";
-                     }
-                    cout <<endl;
 
                     check = 0;
                     for (auto elem: elem1)
                     {
                         if (elem % 2 != 0)
-                        {                             cout << "*1"<<endl;
+                        {
                             return false;
                         }
                     }
@@ -97,8 +85,6 @@ class Solution
                     }
                 }
             }
-              return true;
+            return true;
         }
-  
-
 };
