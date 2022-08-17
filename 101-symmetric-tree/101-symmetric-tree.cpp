@@ -11,38 +11,37 @@
  */
 class Solution {
 public:
-     bool isSymmetricHelp(TreeNode* nodeleft , TreeNode* noderight)
+     bool isneed(TreeNode* root1,TreeNode* root2 )
+
      {
-         if(nodeleft==NULL || noderight==NULL)
-         {
-             if(nodeleft==noderight)
-             {
+          if(root1==NULL || root2==NULL)
+          {
+              if(root1==root2)
+              {
                   return true;
-             }
-             else{
+              }
+              else{
                   return false;
-             }
-         }
-         
-         if(nodeleft->val!=noderight->val)
-         {
-       
-              return false;
-         }
-         
-        return  (isSymmetricHelp(nodeleft->left,noderight->right)  && isSymmetricHelp(nodeleft->right,noderight->left)); 
-         
+              }
+          }
+          if(root1->val!=root2->val)
+          {
+               return false;
+          }
+          return isneed(root1->left,root2->right) &&  isneed(root1->right,root2->left);
           
+         
+         
+         
      }
-    
-    
-    bool isSymmetric(TreeNode* root) { 
+         bool isSymmetric(TreeNode* root) {
         if(root==NULL)
         {
              return false;
         }
         else{
-           return  isSymmetricHelp(root->left,root->right);
+            return isneed(root->left,root->right);
         }
+        
     }
 };
