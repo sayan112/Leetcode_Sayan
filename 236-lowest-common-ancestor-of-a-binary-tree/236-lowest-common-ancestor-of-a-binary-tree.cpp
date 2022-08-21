@@ -9,7 +9,9 @@
  */
 class Solution {
 
-    bool findpath (TreeNode* root, TreeNode* need, vector<TreeNode*>&vec)
+
+    public:
+        bool  findpath (TreeNode* root, TreeNode* need, vector<TreeNode*>&vec)
     {
         
          if(!root)
@@ -20,18 +22,19 @@ class Solution {
         vec.push_back(root);
          if(root==need)
          {
-              return true;
+               return true;
          }
-         if(findpath(root->left,need,vec) || findpath(root->right,need,vec) )
-         {
-             return true;
-         }
-         vec.pop_back();
+         
+        bool left = findpath(root->left , need , vec);
+        bool right =  findpath(root->right,need,vec);
+             if(left|| right)
+             {
+                  return true;
+             }
+            vec.pop_back();
          return false;
         
-        
     }
-    public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
          vector<TreeNode*>vec1;
      
@@ -40,12 +43,13 @@ class Solution {
         findpath(root, q , vec2 );
        
          TreeNode *lastCommon=NULL;
+     
         for(int i =0; i <  min (vec1.size(),vec2.size());i++)
         {
             if(vec1[i]==vec2[i])
             {
                 lastCommon=vec1[i];
-            }
+            } 
           
         }
         
