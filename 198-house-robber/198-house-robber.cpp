@@ -1,30 +1,26 @@
 class Solution {
 public:
-     int  getrob(vector<int>& nums, int idx, unordered_map<int,int>&mp )
+    int maxsumnonadj (vector<int>nums, int idx , unordered_map<int,int>&mp)
+ {
+     if(nums.size()<=idx)
      {
-          if(idx==0)
-          {
-             return  nums[idx];
-          }
-         if(idx<0)
-         {
-             return 0;
-         }
-          int currentkey=idx;
-         if(mp.find(currentkey)!=mp.end())
-         {
-             return mp[currentkey];
-         }
-         int pick = nums[idx]+ getrob (nums,idx-2,mp);
-         int non_pick= getrob (nums,idx-1,mp);
-       mp[currentkey]=max(pick, non_pick);
-          return  mp[currentkey];
+         return 0;
      }
+      int curIdx= idx;
+     if(mp.find(curIdx)!=mp.end())
+     {
+         return mp[curIdx];
+     }
+     
+    int non_pick= maxsumnonadj(nums,idx+1,mp);
+    int pick=nums[idx]+ maxsumnonadj(nums,idx+2,mp);
+    mp[curIdx]= max(non_pick,pick);
+      return  mp[curIdx];
+ }
     int rob(vector<int>& nums) {
-        int idx=nums.size()-1;
-        unordered_map<int,int>mp;
-        
-     return    getrob (nums,idx,mp);
-        
+        int idx =0;
+  unordered_map<int,int>mp;
+   return  maxsumnonadj(nums,idx,mp);
     }
 };
+
