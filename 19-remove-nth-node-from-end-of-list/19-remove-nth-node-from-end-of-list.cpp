@@ -1,46 +1,37 @@
 /**
- *Definition for singly-linked list.
- *struct ListNode {
- *   int val;
- *   ListNode * next;
- *   ListNode() : val(0), next(nullptr) {}
- *   ListNode(int x) : val(x), next(nullptr) {}
- *   ListNode(int x, ListNode *next) : val(x), next(next) {}
- *};
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
  */
-class Solution
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode*slow=head;
+          ListNode*fast=head;
+for(int i =0; i <n+1 ; i++)
 {
-    public:
-        ListNode* removeNthFromEnd(ListNode *head, int n)
+    if(!fast)
+    {
+         return head->next;
+    }
+     fast=fast->next;
+    
+}
+        
+        while(fast)
         {
-
-            vector<int> vec; 
-            
-            // putting all node values into a vector :)
-            
-            while (head)
-            {
-                vec.push_back(head->val);
-                head = head->next;
-            }
-            
-            
-            // now create new node and add values into it without the nth value from end
-            ListNode *ans = new ListNode();
-            ListNode *node = ans;
-            for (int i = 0; i < vec.size(); i++)
-            {
-                if (i == (vec.size() - n))
-                {
-                    continue;
-                }
-                ListNode *helper = new ListNode(vec[i]);
-                node->next = helper;
-                node = node->next;
-            }
-            
-            // now return just ans->next :)
-            
-            return ans->next;
+             slow=slow->next;
+            fast=fast->next;
         }
+         cout << slow->val<<endl;
+        
+        slow->next=slow->next->next;
+         return head;
+        
+    }
 };
