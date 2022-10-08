@@ -1,68 +1,53 @@
-class Solution {
-public:
-    int count=0;
-    
-    vector<int> BFSvector(vector<int> adjlist[] , int n)
- {
-     vector<int>visited(n,0);
-      vector<int>BFSansvector;
-      for (int i = 0; i <n ; i++)
-      {
-        if(!visited[i])
+class Solution
+{
+    public:
+
+        void dfs(int node, vector<int> &visitedarry, vector<int> adjlist[])
         {
-            count++;
-            queue<int>q;
-            q.push(i);
-            visited[i]=1;
-             while (!q.empty())
-             {
-             int node=q.front();
-             q.pop();
-             BFSansvector.push_back(node);
-             for(auto elem : adjlist[node])
-             {
-                if(!visited[elem])
+visitedarry[node]=1;
+            for (auto elem: adjlist[node])
+            {
+                if (!visitedarry[elem])
                 {
-                    q.push(elem);
-                     visited[elem]=1;
+                    visitedarry[elem] = 1;
+                    dfs(elem, visitedarry, adjlist);
                 }
-             }
-             }
-        }
-      }
-       return BFSansvector;
-      
- }
-    int findCircleNum(vector<vector<int>>& isConnected) {
-       int n = isConnected.size();
-        
-        vector<int>adjlist[n+1];
-        
-        for(int i =0; i <n;i++ )
-        {
-               for(int j=0; j<n;j++ )
-        {
-            if(isConnected[i][j]==1 && i!=j)
-            {
-                adjlist[i].push_back(j);
-                 adjlist[j].push_back(i);
             }
-               }
         }
-        for(auto elem : adjlist)
+
+    int DFStraversal(vector<int> adjlist[], int n)
+    {
+        vector<int> visitedarray(n , 0);
+        int count = 0;
+        for (int i = 0; i < n; i++)
         {
-            for(auto elem1: elem)
+
+            if (!visitedarray[i])
             {
-                cout << elem1<<" ";
+                count++;
+                dfs(i, visitedarray, adjlist);
             }
-            cout<<endl;
         }
-            
-            
-       BFSvector(adjlist,n);     
-            
-            return count;
-            
+        return count;
+    }
+    int findCircleNum(vector<vector < int>> &isConnected)
+    {
+        int n = isConnected.size();	// node size 
+
+       	// at first make adjlist from matrix 
+        vector<int> adjlist[n];
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (isConnected[i][j] == 1 && i != j)
+                {
+                    adjlist[i].push_back(j);
+                    adjlist[j].push_back(i);
+                }
+            }
         }
-    
+
+        return DFStraversal(adjlist, n);
+    }
 };
