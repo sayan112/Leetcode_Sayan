@@ -10,7 +10,7 @@ class Solution
             int m = grid[0].size();
 
             queue<pair<pair<int, int>, int>> q;
-      vector<vector < int>> visited(n, vector<int> (m, 0));
+            vector<vector < int>> visited(n, vector<int> (m, 0));
            	// ok so at first we have to check how many rotten orange we have  and mark them and put into our queue
             for (int i = 0; i < n; i++)
             {
@@ -26,7 +26,6 @@ class Solution
                             },
                             0 });
                     }
-                 
                 }
             }
 
@@ -43,7 +42,6 @@ class Solution
                 0,
                 -1
             };
-        
 
             while (!q.empty())
             {
@@ -65,25 +63,25 @@ class Solution
                                 newrow,
                                 newcol
                             },
-                            count + 1 });
+                            count + 1 });	// we have to increase the count as we grow to the higher level
                         visited[newrow][newcol] = 2;
                     }
                 }
             }
-            
-            
-            
-             for ( int i=0; i < n ; i++)
-             {
-                 
-                   for ( int j=0; j< m ; j++)
-             {
-            if(visited[i][j]!=2 && grid[i][j]==1 )
+
+           	// if we are not able to fill the grid with all rotten orenges 
+           	// thats why we have to check if there is any fresh one left 
+            for (int i = 0; i < n; i++)
             {
-                return -1; 
+
+                for (int j = 0; j < m; j++)
+                {
+                    if (visited[i][j] != 2 && grid[i][j] == 1)
+                    {
+                        return -1;
+                    }
+                }
             }
-             }
-             }
             return ansmax;
         }
 };
