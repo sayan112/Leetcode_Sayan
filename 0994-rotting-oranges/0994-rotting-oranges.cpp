@@ -19,12 +19,7 @@ class Solution
                     if (grid[i][j] == 2)
                     {
                         visited[i][j] = 2;
-                        q.push({
-		{
-                                i,
-                                j
-                            },
-                            0 });
+                        q.push({{i,j},0});
                     }
                 }
             }
