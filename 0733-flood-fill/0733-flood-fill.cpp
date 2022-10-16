@@ -1,43 +1,55 @@
 class Solution
 {
     public:
-        void Dfs(vector<vector < int>> &image, vector< vector< int>> &imagecopy, int row, int col, int newcolor, int delrow[], int delcol[] , int initialcolor)
-
-    {
-             int n = image.size();
-             int m = image[0].size();
-       	// motive to color all the cels which are connected 4 directionlly, and it has to be the same color as the starting cell ;
-        imagecopy[row][col] = newcolor;
-        for (int i = 0; i < 4; i++)
+        void Bfs(vector<vector < int>> &image, int initialcolor, int row, int col, int color, int del_row[], int del_col[])
         {
+            int n = image.size();
+            int m = image[0].size();
 
-            int newrow = row + delrow[i];
-            int newcol = col + delcol[i];
-             if( newrow>=0 && newrow< n &&  newcol>=0 && newcol<m && imagecopy[newrow][newcol]==initialcolor && imagecopy[newrow][newcol]!=newcolor )
-             {
-                 Dfs(image, imagecopy, newrow, newcol, newcolor, delrow, delcol, initialcolor);
-                 
-             }
+            queue<pair<int, int>> q;
+             image[row][col]=color;
+            q.push({ row,
+                col });
+            while (!q.empty())
+            {
+                int row = q.front().first;
+                int col = q.front().second;
+
+                q.pop();
+                for (int i = 0; i < 4; i++)
+                {
+                    int nrow = row + del_row[i];
+                    int ncol = col + del_col[i];
+
+                      if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m &&  image[nrow][ncol] == initialcolor)
+       
+                    {
+                         image[nrow][ncol]=color;
+                        q.push({ nrow,
+                            ncol });
+                    }
+                }
+            }
         }
-    }
     vector<vector < int>> floodFill(vector<vector < int>> &image, int sr, int sc, int color)
     {
-        vector<vector < int>> imagecopy = image;
 
-       	// as we have to move 4 direction so we take our delrow and delcol as always 
-      
-       	int delrow[] = { -1,
-       	    0,
-       	    1,
-       	    0
-       	};
-       	int delcol[] = { 0,
-       	    1,
-       	    0,
-       	    -1
-       	};
-             int initalcolor=image[sr][sc];
-        Dfs(image, imagecopy, sr, sc, color, delrow, delcol, initalcolor);
-         return imagecopy;
+        int del_row[] = { -1,
+            0,
+            1,
+            0
+        };
+        int del_col[] = { 0,
+            1,
+            0,
+            -1
+        };
+        int initialcolor = image[sr][sc];
+         if(image[sr][sc]!=color)
+         {
+                 Bfs(image, initialcolor, sr, sc, color, del_row, del_col);
+         }
+    
+         return image;
     }
 };
