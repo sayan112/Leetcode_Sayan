@@ -12,7 +12,7 @@ public:
             {
                 pq.pop();
             }
-            if(pq.size())
+            if(!pq.empty())
             {
                auto elem=pq.top();
                 pq.pop();
@@ -31,7 +31,7 @@ public:
             {
                 pq.pop();
             }
-            if(pq.size())
+            if(!pq.empty())
             {
                auto elem=pq.top();
                 pq.pop();
