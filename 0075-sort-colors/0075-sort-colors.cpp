@@ -5,7 +5,7 @@ class Solution
         {
 
            sort(nums.begin(),nums.end());
-            
+           // O(N*logN)
             
         }
 };
