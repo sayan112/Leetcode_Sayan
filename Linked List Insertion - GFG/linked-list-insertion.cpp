@@ -52,7 +52,6 @@ class Solution{
          
               if(head==NULL)
          {
-             head=newNode;
               return newNode;
          }
             Node *temp=head;
