@@ -53,7 +53,7 @@ class Solution{
               if(head==NULL)
          {
              head=newNode;
-              return head;
+              return newNode;
          }
             Node *temp=head;
             while(temp->next)
