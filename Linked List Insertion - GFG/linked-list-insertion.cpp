@@ -49,12 +49,13 @@ class Solution{
     Node *insertAtEnd(Node *head, int x)  {
        
             Node *newNode= new Node(x);
-            Node *temp=head;
+         
               if(head==NULL)
          {
              head=newNode;
               return head;
          }
+            Node *temp=head;
             while(temp->next)
             {
                 temp=temp->next;
