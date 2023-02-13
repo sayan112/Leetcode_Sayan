@@ -41,7 +41,7 @@ class Solution{
           Node * newNode= new Node(x);
           newNode->next=head;
           head=newNode;
-           return head;
+           return newNode;
     }
     
     
