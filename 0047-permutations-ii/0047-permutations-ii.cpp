@@ -2,7 +2,7 @@ class Solution
 {
     public:
 
-        void generateallPermutations(vector<int> nums, int idx, vector<vector< int>> &ds)
+        void generateallUniquePermutations(vector<int> nums, int idx, vector<vector< int>> &ds)
         {
 
             if (idx == nums.size())
@@ -17,7 +17,7 @@ class Solution
                     continue;
                 }
                 swap(nums[idx], nums[i]);
-                generateallPermutations(nums, idx + 1, ds);
+                generateallUniquePermutations(nums, idx + 1, ds);
           
             }
         }
@@ -26,7 +26,7 @@ class Solution
         int idx = 0;
         vector<vector<int>> ds;
         sort(nums.begin(),nums.end());
-        generateallPermutations(nums, idx, ds);
+        generateallUniquePermutations(nums, idx, ds);
         return ds;
     }
 };
