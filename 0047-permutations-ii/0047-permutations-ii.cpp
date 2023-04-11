@@ -1,28 +1,32 @@
-class Solution {
-private:
-    void solve(vector<int>nums, int ind, vector<vector<int>>&ans){
-        //BASE_CASE
-        if(ind==nums.size()){
-            ans.push_back(nums);
-            return ;
+class Solution
+{
+    public:
+
+        void generateallPermutations(vector<int> nums, int idx, vector<vector< int>> &ds)
+        {
+
+            if (idx == nums.size())
+            {
+                ds.push_back(nums);
+                return;
+            }
+            for (int i = idx; i < nums.size(); i++)
+            {
+                if (i != idx && nums[i] == nums[idx])
+                {
+                    continue;
+                }
+                swap(nums[idx], nums[i]);
+                generateallPermutations(nums, idx + 1, ds);
+          
+            }
         }
-        
-        for(int i=ind;i<nums.size();i++){
-            if(i!=ind && nums[ind]==nums[i])continue; // to avoid duplicate
-            swap(nums[i],nums[ind]);
-            solve(nums,ind+1,ans);
-           
-        }
-        
-    }
-public:
-    vector<vector<int>> permuteUnique(vector<int>& nums) {
-        int ind=0;
+    vector<vector < int>> permuteUnique(vector<int> &nums)
+    {
+        int idx = 0;
+        vector<vector<int>> ds;
         sort(nums.begin(),nums.end());
-        vector<vector<int>>ans;
-        
-        solve(nums,ind,ans);
-        
-        return ans;
+        generateallPermutations(nums, idx, ds);
+        return ds;
     }
 };
