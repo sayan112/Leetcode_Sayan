@@ -8,19 +8,20 @@ class Solution
             {
                 ans.push_back(need);
             }
-             if(open!=0)
-             {
-                string need2=need;
-                  need2+='(';
-                        solve(ans, open-1, close, need2);  
-             }
-             if(close>open)
-             {
-                 string need1=need;
-                  need1+=')';
-                        solve(ans, open, close-1, need1);
-             }
-           
+            if (open != 0)
+            {
+
+                need += '(';
+                solve(ans, open - 1, close, need);
+                     need.pop_back();
+            }
+            if (close > open)
+            {
+
+                need += ')';
+                solve(ans, open, close - 1, need);
+                      need.pop_back();
+            }
         }
     vector<string> generateParenthesis(int n)
     {
