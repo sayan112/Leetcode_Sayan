@@ -66,10 +66,11 @@ class Solution {
           return true;
               
      }
-        void solve(vector<string> &board, int col, int n, vector<vector< string>> &ans) {
+        void solve(vector<string> &board, int col, int n, int &ans) {
             if(col==n)
             {
-                ans.push_back(board);
+                 
+              ans++;
                  return ;
             }
              for(int row=0;row<n;row++)
@@ -85,7 +86,7 @@ class Solution {
         }
 public:
     int totalNQueens(int n) {
-          vector<vector < string>> ans;
+      int ans=0 ;
             vector<string> board(n);
             string s(n, '.');
             for (auto &elem: board)
@@ -93,6 +94,6 @@ public:
                 elem = s;
             }
             solve(board, 0, n, ans);
-            return ans.size();
+            return ans;
     }
 };
