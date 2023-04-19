@@ -18,7 +18,7 @@ public:
           {
               return ;
           }
-          need.push_back(root->val);
+          need.emplace_back(root->val);
          solve(root->left,need);
          
          solve(root->right,need);
