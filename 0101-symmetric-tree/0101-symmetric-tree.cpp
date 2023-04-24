@@ -21,7 +21,7 @@ public:
          {
               return false;
          }
-        return  issym( left->left , right->right) && issym(right->left,left->right);
+        return  issym( right->right, left->left ) && issym(right->left,left->right);
          
      }
     bool isSymmetric(TreeNode* root) {
