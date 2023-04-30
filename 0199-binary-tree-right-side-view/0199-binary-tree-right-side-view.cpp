@@ -13,7 +13,7 @@ class Solution
 {
 
     public:
-        void leftview(TreeNode *root , vector<int> &need, int lv)
+        void rightview(TreeNode *root , vector<int> &need, int lv)
         {
             if (!root)
             {
@@ -24,15 +24,15 @@ class Solution
                 need.push_back(root->val);
             }
 
-            leftview(root->right, need, lv + 1);
-            leftview(root->left, need, lv + 1);
+            rightview(root->right, need, lv + 1);
+            rightview(root->left, need, lv + 1);
         }
 
     vector<int> rightSideView(TreeNode *root)
     {
         vector<int> need;
         int lv = 0;
-        leftview(root, need, lv);
+        rightview(root, need, lv);
         return need;
     }
 };
