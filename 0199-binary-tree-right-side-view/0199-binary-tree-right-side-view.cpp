@@ -33,10 +33,6 @@ class Solution
         vector<int> need;
         int lv = 0;
         leftview(root, need, lv);
-        for (auto elem: need)
-        {
-            cout << elem << " ";
-        }
         return need;
     }
 };
