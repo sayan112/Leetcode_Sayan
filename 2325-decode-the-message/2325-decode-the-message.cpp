@@ -17,7 +17,6 @@ public:
            if(mp.find(key[i])==mp.end())
            {
                 mp[key[i]]=finod;
-               cout << finod <<" "<< key[i]<<endl;
                code++;
            }
           
