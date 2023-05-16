@@ -2,11 +2,13 @@ class Solution {
 public:
     int secondHighest(string s) {
         vector<int>need;
+         priority_queue<int> pq; 
          for(auto elem : s )
          {
               if(elem>='0'&& elem<='9')
               {
-                 need.push_back(elem-'0');  
+                 need.push_back(elem-'0');
+                
               }
              
          }
@@ -15,26 +17,29 @@ public:
         {
              return -1;
         }
-       int maxi = *max_element(need.begin(),need.end());
-    
-         int ansmax=INT_MIN;
-         for(auto elem : need)
-         {
-              if(ansmax<elem)
-              {
-                   if(elem!=maxi)
-                   {
-                           ansmax=elem; 
-                   }
-             
-              }
-         }
-        
-         if(ansmax==INT_MIN)
-
+       sort(need.begin(),need.end());
+         auto uniqueEnd =unique(need.begin(), need.end());
+    // Erase the duplicate elements from the vector
+    need.erase(uniqueEnd, need.end());
+       
+         if(need.size()==1)
          {
               return -1;
          }
-        return ansmax ; 
+         for(auto elem: need)
+         {
+                pq.push(elem);
+         }
+         //  while(!pq.empty())
+         // {
+         //      cout << pq.top()<<" ";
+         //      pq.pop();
+         // }
+         int max_elem=pq.top();
+         pq.pop();
+         int max_2nd=pq.top();
+    return max_2nd;
+        
+
     }
 };
