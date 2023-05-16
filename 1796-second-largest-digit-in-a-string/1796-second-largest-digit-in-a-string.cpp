@@ -2,7 +2,7 @@ class Solution {
 public:
     int secondHighest(string s) {
         vector<int>need;
-         priority_queue<int> pq; 
+       
          for(auto elem : s )
          {
               if(elem>='0'&& elem<='9')
@@ -26,19 +26,7 @@ public:
          {
               return -1;
          }
-         for(auto elem: need)
-         {
-                pq.push(elem);
-         }
-         //  while(!pq.empty())
-         // {
-         //      cout << pq.top()<<" ";
-         //      pq.pop();
-         // }
-         int max_elem=pq.top();
-         pq.pop();
-         int max_2nd=pq.top();
-    return max_2nd;
+  return need[need.size()-2];
         
 
     }
