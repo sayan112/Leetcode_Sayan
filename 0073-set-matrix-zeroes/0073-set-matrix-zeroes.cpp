@@ -1,53 +1,36 @@
 class Solution
 {
-    private:
-        void maketheRowZero(int i, vector<vector < int>> &matrix)
-        {
-            for (int j = 0; j < matrix[0].size(); j++)
-            {
-                if (matrix[i][j] != 0)
-                {
-                    matrix[i][j] = INT_MAX-100;
-                }
-            }
-        }
-    void maketheColZero(int j, vector<vector < int>> &matrix)
-    {
-
-        for (int i = 0; i < matrix.size(); i++)
-        {
-
-            if (matrix[i][j] != 0)
-            {
-                matrix[i][j] =  INT_MAX-100;
-            }
-        }
-    }
     public:
-
         void setZeroes(vector<vector < int>> &matrix)
         {
-            for (int i = 0; i < matrix.size(); i++)
+            
+            // space complexity-> O(n)+O(m)
+//              Time complexity->O(2*n*m)
+            int row = matrix.size();
+            int col = matrix[0].size();
+            vector<int>colarr(col,0);
+             vector<int>rowarr(row,0);
+            
+            // O(n*m)
+            for (int i = 0; i < row; i++)
             {
-                for (int j = 0; j < matrix[0].size(); j++)
+                for (int j = 0; j < col; j++)
                 {
-
                     if (matrix[i][j] == 0)
                     {
-
-                        maketheRowZero(i, matrix);
-                        maketheColZero(j, matrix);
+                        colarr[j] = 1;
+                        rowarr[i] = 1;
                     }
                 }
             }
-
-            for (auto &elem: matrix)
+             // O(n*m)
+            for (int i = 0; i < row; i++)
             {
-                for (auto &elem1: elem)
+                for (int j = 0; j < col; j++)
                 {
-                    if (elem1 ==  INT_MAX-100)
+                    if (colarr[j] || rowarr[i])
                     {
-                        elem1 = 0;
+                        matrix[i][j] = 0;
                     }
                 }
             }
