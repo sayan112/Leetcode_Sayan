@@ -2,7 +2,7 @@
 class Solution
 {
 public:
-    void nextPermutation(vector<int> &vec)
+    void nextPermutation(vector<int> &nums)
     {
 
         //         c++ stl solution :)
@@ -10,32 +10,35 @@ public:
         // next_permutation(nums.begin(),nums.end());
 
         // Best optimised approach :)
-        int i;
-        for (i = vec.size() - 2; i >= 0; i--)
+         // 2 1 5 3 0 0
+//      2 3 1 5 00
+        int i ;
+         for( i = nums.size()-2;i>=0;i--)
+         {
+             if(nums[i]<nums[i+1])
+             {
+                 break;
+             }
+         }
+         int breakpoint =i;
+         // cout << breakpoint;
+         if(breakpoint<0)
+         {
+              reverse(nums.begin(),nums.end());
+           return ;  
+         }
+        else{
+            
+     
+        for(int j=nums.size()-1;j>0;j--)
         {
-            if (vec[i] < vec[i + 1])
-            {
-                break;
-            }
+             if(nums[breakpoint]<nums[j])
+             {
+                 cout << breakpoint <<" "<< j ;
+                  swap(nums[i],nums[j]);
+                  break;
+             }
         }
-        cout << i;
-        if (i < 0)
-        {
-            reverse(vec.begin(), vec.end());
-        }
-
-        else
-        {
-            for (int j = vec.size() - 1; j > 0; j--)
-            {
-
-                if (vec[j] > vec[i])
-                {
-                    swap(vec[j], vec[i]);
-                    break;
-                }
-            }
-            reverse(vec.begin() + i + 1, vec.end());
-        }
-    }
-};
+          reverse(nums.begin() + i + 1, nums.end());     
+           }
+    }};
