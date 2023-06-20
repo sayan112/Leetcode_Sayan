@@ -14,11 +14,20 @@ class Solution
                     matrix[i][j] = need[j][i];
                 }
             }
+            // after transposing 
+//             1 4 7 
+//             2 5 8 
+//             3 6 9 
+            
 // then reverse each row
             for (int i = 0; i < matrix.size(); i++)
             {
 
                 reverse(matrix[i].begin(),matrix[i].end());
             }
+            
+            
+            
+            
         }
 };
