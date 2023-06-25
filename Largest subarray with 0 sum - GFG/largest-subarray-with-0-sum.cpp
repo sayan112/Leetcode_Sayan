@@ -12,25 +12,33 @@ class Solution{
     public:
     int maxLen(vector<int>&A, int n)
     {   
-       
+        // Your code here
         unordered_map<int,int>mp;
-         mp[0]=-1;
-          int size =0;
-           int maxi=0;
-          int prefixsum=0;
-           for(int i =0; i < A.size();i++)
-           {
-               prefixsum+=A[i];
-               if(mp.find( prefixsum)==mp.end())
-               {
-                   mp[prefixsum]=i;
-               }
-               else{
-                  size=i-mp[prefixsum];
-                  maxi=max(maxi,size);
-               }
-           }
-            return maxi;
+         int sum=0;
+        int maxi=0;
+        mp[0]=-1;
+         for(int i =0; i<A.size();i++)
+         {
+            sum+=A[i];
+             if(sum==0)
+             {
+                maxi=max(maxi,i+1);
+             }
+             
+                  if(mp.find(sum)!=mp.end())
+                  {
+                       maxi=max(maxi,(i-mp[sum]));
+                  }
+                  else{
+                      mp[sum]=i;
+                  }
+             
+         }
+        //  for(auto elem : mp)
+        //  {
+        //      cout << elem.first<<" "<<elem.second<<endl;
+        //  }
+          return maxi;
     }
 };
 
