@@ -11,23 +11,16 @@
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
-         vector<int>vec;
+        string s;
+        
         while(head)
         {
-             vec.push_back(head->val);
+           s+=(head->val)+'0';
             head=head->next;
 
         }
-        
-         vector<int>need = vec;
-         reverse(vec.begin(),vec.end());
-         for(int i=0;i<vec.size();i++)
-         {
-             if(vec[i]!=need[i])
-             {
-                  return false;
-             }
-         }
-         return true;
+       string check = s;
+         reverse(check.begin(),check.end());
+         return check==s;
     }
 };
