@@ -16,7 +16,7 @@ public:
          {
              return NULL;
          }
-        while(fast->next && fast->next->next)
+        while(fast && fast->next)
         {
              
             slow=slow->next;
