@@ -6,7 +6,7 @@ class Solution
             vector<int> ans;
             unordered_map<int, int> mp;
 
-            for (auto elem: nums)
+            for (auto &elem: nums)
             {
                 mp[elem]++;
             }
@@ -17,7 +17,7 @@ class Solution
 
             priority_queue<pair<int, int>, vector< pair<int, int>>, greater<pair<int, int>>> pq;
 
-            for (auto elem: mp)
+            for (auto &elem: mp)
             {
                 pq.push({ elem.second,
                     elem.first });
