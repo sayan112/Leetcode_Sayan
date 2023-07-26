@@ -10,11 +10,7 @@ class Solution
             {
                 mp[elem]++;
             }
-            // for (auto elem: mp)
-            // {
-            //     cout << elem.first << " " << elem.second << endl;
-            // }
-
+            
             priority_queue<pair<int, int>, vector< pair<int, int>>, greater<pair<int, int>>> pq;
 
             for (auto &elem: mp)
