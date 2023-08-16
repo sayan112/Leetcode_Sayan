@@ -9,34 +9,24 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+// longest distance between two nodes 
 class Solution {
 public:
-     int checkheight (TreeNode* root)
-     {
-          if(!root)
-          {
-               return 0;
-          }
-         int lh=checkheight(root->left);
-       int rh= checkheight(root->right);
-          return 1+max(lh,rh);
-     }
-    
-    void checkdiameter (TreeNode* root , int &maxi )
-    {
-           if(!root)
-          {
-               return ;
-          }
-        int leftheight=checkheight(root->left);
-          int Rightheight=checkheight(root->right);
-         maxi=max(maxi, (leftheight+Rightheight));
-        checkdiameter(root->left,maxi);
-        checkdiameter(root->right,maxi);
+        int diameterOfTree(TreeNode* root , int &diameter) {
+        if(!root)
+        {
+             return 0;
+        }
+        int leftheight=diameterOfTree(root->left,diameter);
+           int rightheight=diameterOfTree(root->right,diameter);
+             diameter=max(diameter ,(leftheight+rightheight) );
+         
+         return 1+max(leftheight, rightheight);
+        
     }
     int diameterOfBinaryTree(TreeNode* root) {
-         int maxi=0;
-      checkdiameter(root,maxi);   
-         return maxi;
+         int diameter=0;
+     diameterOfTree(root,diameter);
+         return diameter;
     }
 };
