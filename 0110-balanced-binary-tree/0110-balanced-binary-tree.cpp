@@ -11,24 +11,26 @@
  */
 class Solution {
 public:
-     int balacedornot (TreeNode* root , bool &isbalance)
+     int checkisbalace ( TreeNode * root , bool &isbaalace )
      {
-         if(root==NULL)
-         {
-              return 0 ;
-         }
-          int lh=balacedornot(root->left,isbalance);
-         int rh=balacedornot(root->right,isbalance);
-         if(abs(lh-rh)>1)
-         {
-              isbalance=false;
-         }
-          return 1+max(rh,lh);
+          if(!root)
+          {
+               return 0;
+          }
+         
+         int leftheight=  checkisbalace(root->left , isbaalace);
+           int rightheight=  checkisbalace(root->right , isbaalace);
+          if(abs(leftheight-rightheight)>1)
+          {
+              isbaalace=false;
+          }
+         return 1+max(leftheight ,rightheight);
+         
          
      }
     bool isBalanced(TreeNode* root) {
-        bool isbalance=true;
-        balacedornot(root,isbalance);
-         return isbalance;
+         bool isbaalace=true;
+         checkisbalace(root , isbaalace);
+        return  isbaalace;
     }
 };
