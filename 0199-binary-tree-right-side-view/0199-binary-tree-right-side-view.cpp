@@ -1,38 +1,36 @@
 /**
- *Definition for a binary tree node.
- *struct TreeNode {
- *    int val;
- *    TreeNode * left;
- *    TreeNode * right;
- *    TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- *};
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
  */
-class Solution
-{
-
-    public:
-        void rightview(TreeNode *root , vector<int> &need, int lv)
-        {
-            if (!root)
-            {
-                return;
-            }
-            if (lv == need.size())
-            {
-                need.push_back(root->val);
-            }
-
-            rightview(root->right, need, lv + 1);
-            rightview(root->left, need, lv + 1);
-        }
-
-    vector<int> rightSideView(TreeNode *root)
-    {
-        vector<int> need;
-        int lv = 0;
-        rightview(root, need, lv);
-        return need;
+class Solution {
+public:
+     void rightSide(TreeNode*root , vector<int>&rightview,int level)
+     {
+          if(!root)
+          {
+              return ;
+          }
+          if(rightview.size()==level)
+          {
+              rightview.push_back(root->val);
+          }
+    
+          rightSide(root->right,rightview,level+1);
+              
+         rightSide(root->left,rightview,level+1);
+         
+     }
+    vector<int> rightSideView(TreeNode* root) {
+     int level=0;
+         vector<int>rightview;
+         rightSide(root,rightview,level);
+         return rightview;
     }
 };
