@@ -1,35 +1,34 @@
-class Solution {
-public:
-    
-void generateallsolutions (vector<int>& candidates , int target, int idx ,vector<int>&ds, vector<vector<int>>&ans)
-    
+class Solution
 {
- 
-    if(idx==candidates.size())
-    {
-        if(target==0)
+    public:
+        void generatecombinationSum(vector<int> &candidates, int idx, int target, vector<int> &ds, vector< vector< int>> &ans)
         {
-             ans.push_back(ds);
-         
+            if (idx == candidates.size())
+            {
+                if (target == 0)
+                {
+                    ans.push_back(ds);
+                }
+                return;
+            }
+            if (candidates[idx] <= target)
+            {
+                ds.push_back(candidates[idx]);
+                target -= candidates[idx];
+
+                generatecombinationSum(candidates, idx, target, ds, ans);
+                target += candidates[idx];
+                ds.pop_back();
+            }
+
+            generatecombinationSum(candidates, idx + 1, target, ds, ans);
         }
-            return;
-    }
-    
-    if(target>=candidates[idx])
+    vector<vector < int>> combinationSum(vector<int> &candidates, int target)
     {
-        ds.push_back(candidates[idx]);
-        generateallsolutions(candidates,target-candidates[idx],idx,ds,ans);
-        ds.pop_back();
-    }
-        generateallsolutions(candidates,target,idx+1,ds,ans);
-    
-    
-}
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        int idx=-0;
-         vector<int>ds;
-    vector<vector<int>> ans;
-         generateallsolutions(candidates,target,idx,ds,ans);
-         return ans;
+        vector<vector < int>> ans;
+        vector<int> ds;
+        int idx = 0;
+        generatecombinationSum(candidates, idx, target, ds, ans);
+        return ans;
     }
 };
