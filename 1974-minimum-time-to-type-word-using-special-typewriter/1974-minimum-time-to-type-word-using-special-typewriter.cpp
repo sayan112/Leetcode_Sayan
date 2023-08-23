@@ -18,7 +18,6 @@ class Solution
             else{
                 int clockwise=abs(word[count]-need);
                 int anticlock=26-clockwise;
-                cout<< clockwise<<' '<< anticlock<<endl;
                 ans+=min(anticlock,clockwise);
                 ans++;
                 need=word[count];
