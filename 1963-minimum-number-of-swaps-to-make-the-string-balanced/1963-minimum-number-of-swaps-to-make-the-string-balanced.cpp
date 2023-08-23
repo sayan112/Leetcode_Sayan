@@ -19,7 +19,7 @@ public:
                  }
              }
          }
-          int ans = (int) std::ceil(st.size() / 4.0);
-         return ans;
+          // int ans = (int) std::ceil(st.size() / 4.0);
+         return (st.size()+3)/4;
     }
 };
