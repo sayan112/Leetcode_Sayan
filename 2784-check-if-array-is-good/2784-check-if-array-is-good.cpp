@@ -12,10 +12,10 @@ public:
                  mp[i]++;  
              }
          }
-         for(auto elem : mp)
-         {
-             cout << elem.first <<" "<<elem.second<<endl;
-         }
+         // for(auto elem : mp)
+         // {
+         //     cout << elem.first <<" "<<elem.second<<endl;
+         // }
        
          for(auto elem : nums)
          {
@@ -31,7 +31,7 @@ public:
                  return false;
              }
          }
-        cout << mp.size()<<endl;
+        // cout << mp.size()<<endl;
          return !mp.size();
     }
 };
