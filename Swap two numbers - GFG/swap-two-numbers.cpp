@@ -10,12 +10,14 @@ using namespace std;
 class Solution{   
 public:
     pair<int, int> get(int a, int b){
+      //10 20 
+    a =b+a;
+   b =abs(b-a);
+      a = abs(a-b);
+      pair<int, int> ans={a,b};
+       return ans ;
+       
       
-      int third=a;
-      a=b;
-      b=third;
-       pair<int,int>ans={a,b};
-        return ans ;
       
     }
 };
