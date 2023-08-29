@@ -10,10 +10,13 @@ using namespace std;
 class Solution{   
 public:
     pair<int, int> get(int a, int b){
-       pair<int,int>ans;
-       ans.first=b;
-       ans.second=a;
+      
+      int third=a;
+      a=b;
+      b=third;
+       pair<int,int>ans={a,b};
         return ans ;
+      
     }
 };
 
