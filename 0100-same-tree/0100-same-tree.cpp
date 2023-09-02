@@ -11,31 +11,28 @@
  */
 class Solution {
 public:
-     void isSametree (TreeNode* p, TreeNode* q , bool &isSame )
+     bool checkIsSame(TreeNode* p, TreeNode* q)
      {
-          if(!p && !q)
+          if(!p&&!q)
           {
-              return;
+               return true;
           }
-         if(!p || !q)
+         else if((p&&!q)||(!p&&q))
          {
-             isSame=false;
-               return ;
+              return false;
          }
          
-          if(p->val!=q->val)
-          {
-              isSame=false;
-               return ;
-          }
+         if(p->val!=q->val)
+         {
+             return false;
+         }
          
-         isSametree(p->left,q->left,isSame);
-                
-         isSametree(p->right,q->right,isSame);
+        return   checkIsSame(p->left , q->left) && checkIsSame(p->right , q->right);
+         
+         
      }
     bool isSameTree(TreeNode* p, TreeNode* q) {
-        bool isSame=true;
-        isSametree(p,q,isSame);
-         return isSame;
+     
+       return  checkIsSame(p,q);
     }
 };
