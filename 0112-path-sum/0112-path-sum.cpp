@@ -11,28 +11,33 @@
  */
 class Solution {
 public:
-     bool need (TreeNode* root, int targetSum )
+    
+     bool targetSumAchivedOrNot(TreeNode* root, int targetSum)
      {
-         
-       
          if(!root)
          {
-              return false;
+return false;
          }
-          
-         if(root->left==NULL && root->right==NULL)
-         {
-              if(targetSum-root->val==0)
-              {
-                   return true;
-              }
-         }
+          if(root->left==NULL && root->right==NULL)
+          {
+               if((targetSum-root->val)==0)
+               {
+                    return true;
+               }
+          }
          
-       return   need(root->left,targetSum-root->val) ||   need(root->right,targetSum-root->val);
-       
+         
+         targetSum-=root->val;
+   bool check1=  targetSumAchivedOrNot(root->left , targetSum) ;
+         bool check2= targetSumAchivedOrNot(root->right , targetSum);
+          return check1|| check2;
+         
      }
     bool hasPathSum(TreeNode* root, int targetSum) {
- 
-     return  need(root,targetSum); 
+         if(!root)
+         {
+             return false;
+         }
+       return  targetSumAchivedOrNot(root,targetSum);
     }
 };
