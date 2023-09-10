@@ -15,7 +15,7 @@ class Solution
                 pq.push({ elem.second,
                     elem.first });
             }
-            cout << pq.size();
+     
             while (pq.size()>1)
             {
                 auto top1 = pq.top();
@@ -29,8 +29,7 @@ class Solution
                 if (top1.first > 0){ pq.push(top1);}
                 if (top2.first > 0){ pq.push(top2);}
             }
-            cout << pq.size();
-            if(!pq.empty())
+            if(pq.size())
             {
                 if(pq.top().first>1)
                 {
