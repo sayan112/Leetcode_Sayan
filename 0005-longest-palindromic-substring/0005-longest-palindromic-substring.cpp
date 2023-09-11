@@ -40,10 +40,7 @@ class Solution
             
         }
        cout << startidx <<" "<< sizepalin;
-         // if(startidx==sizepalin)
-         // {
-         //     sizepalin++;
-         // }
+
          return s.substr(startidx,sizepalin);
     }
 };
