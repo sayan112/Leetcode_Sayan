@@ -1,46 +1,40 @@
 class Solution
 {
     public:
-        bool checkpalin ( string &s , int start , int end )
+        bool checkanypalindrom(int start, int end, string s)
         {
-            while(end>=start)
+            while (end >= start)
             {
-                 if(s[start]!=s[end])
-                 {
-                      return false;
-                 }
+                if (s[end] != s[start])
+                {
+                    return false;
+                }
                 end--;
                 start++;
             }
-             return true;
+            return true;
         }
     string longestPalindrome(string s)
     {
-         int sizepalin =0;
-         int startidx=0;
-        for (int i = 0; i < s.size(); i++)
+        int maxi = 0;
+        string ans;
+
+        for (int start = 0; start < s.size(); start++)
         {
-            for (int j = i; j<s.size(); j++)
+            for (int end = start; end < s.size(); end++)
             {
-               
-                    if (s[i] == s[j])
+                if ((s[start]==s[end]) && checkanypalindrom(start, end, s))
+                {
+
+                    int size = end - start + 1;
+                    if (maxi <= size)
                     {
-                        if (checkpalin(s, i, j)) {
-                             if(sizepalin<j-i+1)
-                             {
-                                 sizepalin=j-i+1;
-                                    startidx=i;  
-                             }
-                 
-                             
-                        
-                        }
+                        maxi = size;
+                        ans = s.substr(start, size);
                     }
                 }
-            
+            }
         }
-       cout << startidx <<" "<< sizepalin;
-
-         return s.substr(startidx,sizepalin);
+         return ans ;
     }
 };
