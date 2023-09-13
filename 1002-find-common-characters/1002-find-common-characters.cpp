@@ -16,13 +16,11 @@ class Solution
                 {
                     mp1[elem]++;
                 }
-
-                for (auto elem: mp)
+                
+                for (auto &elem: mp)
                 {
-                    if (mp.find(elem.first) != mp.end())
-                    {
-                        mp[elem.first] = min(mp[elem.first], mp1[elem.first]);
-                    }
+                      elem.second = min( elem.second, mp1[elem.first]);
+                    
                 }
             }
             vector<string> ans;
