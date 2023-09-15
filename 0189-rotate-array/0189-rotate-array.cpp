@@ -1,25 +1,14 @@
 class Solution {
 public:
-     void rev ( int start , int end , vector<int>&nums )
-     {
-         while(end>=start)
-         {
-             swap(nums[end],nums[start]);
-             end--;
-              start++;
-         }
-         
-     }
+//[1,2,3,4,5,6,7]
+//  7 6 5 4 3 2 1 
+// 5 6 7 
     void rotate(vector<int>& nums, int k) {
-         int sk= k%nums.size();
-        if(nums.size()!=1 && nums.size()>sk)
-        {
-               reverse(nums.begin(),nums.end());
-           rev(0,sk-1,nums);
-        rev(sk,nums.size()-1,nums);
-        }
-       
-      
-        
+        k = k%nums.size();
+    
+       reverse(nums.begin(),nums.end());
+        reverse(nums.begin(),nums.begin()+k);
+   reverse(nums.begin()+k,nums.end());
+          
     }
 };
