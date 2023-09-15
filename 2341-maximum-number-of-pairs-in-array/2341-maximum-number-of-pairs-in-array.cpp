@@ -23,7 +23,6 @@ public:
          nums.clear();
         nums.push_back(count);
           nums.push_back(remain);
-         cout <<count<<" "<< remain <<endl;
          return nums;
     }
 };
