@@ -20,21 +20,12 @@ public:
        }
         temp=head;
         int middle=size/2;
-         if(size%2==0)
-         {
-           
-              while(middle--)
-              {
-                  temp=temp->next;
-              }
-             
-         }
-        else{
+      
                  while(middle--)
               {
                   temp=temp->next;
               }
-        }
+        
          return temp;
     }
 };
