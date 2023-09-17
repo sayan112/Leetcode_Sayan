@@ -10,24 +10,19 @@ class Solution {
 public:
     bool hasCycle(ListNode *head) {
      
-        ListNode *slowpointer=head;
-        ListNode *fastpointer=head;
-         if(head==NULL)
-        {
-             return false;
-        }
-         while(fastpointer &&fastpointer->next )
+        unordered_map<ListNode *,int>mp;
+    while(head)
+    {
+         if(mp.find(head)==mp.end())
          {
-             
-             slowpointer=slowpointer->next;
-             fastpointer=fastpointer->next->next;
-             if(slowpointer==fastpointer)
-             {
-                  return true;
-             }
-             
+                     mp[head]++;
          }
+        else{
+            return true;
+        }
+
+        head=head->next;
+    }
          return false;
-        
     }
 };
