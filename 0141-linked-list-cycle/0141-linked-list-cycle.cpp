@@ -9,9 +9,10 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-     
+     // TC  O(n)
+        // sc o(n)
         unordered_map<ListNode *,int>mp;
-    while(head)
+    while(head) 
     {
          if(mp.find(head)==mp.end())
          {
@@ -24,5 +25,7 @@ public:
         head=head->next;
     }
          return false;
+        
+        
     }
 };
