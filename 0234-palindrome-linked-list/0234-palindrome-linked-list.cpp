@@ -1,11 +1,11 @@
 /**
  *Definition for singly-linked list.
  *struct ListNode {
- *    int val;
- *    ListNode * next;
- *    ListNode() : val(0), next(nullptr) {}
- *    ListNode(int x) : val(x), next(nullptr) {}
- *    ListNode(int x, ListNode *next) : val(x), next(next) {}
+ *   int val;
+ *   ListNode * next;
+ *   ListNode() : val(0), next(nullptr) {}
+ *   ListNode(int x) : val(x), next(nullptr) {}
+ *   ListNode(int x, ListNode *next) : val(x), next(next) {}
  *};
  */
 class Solution
@@ -25,10 +25,10 @@ class Solution
             {
                 temp1 = temp1->next;
             }
-             if(size%2==1)
-             {
-                    return temp1->next;
-             }
+            if (size % 2 == 1)
+            {
+                return temp1->next;
+            }
             return temp1;
         }
     ListNode* reverse(ListNode *head)
@@ -48,26 +48,22 @@ class Solution
     {
         ListNode *temp = head;
         ListNode *middle = middleOfLinkedList(temp);
-         temp=head;
-       ListNode * reversenode=   reverse(middle);
-         // while(reversenode)
-         // {
-         //      cout << reversenode->val;
-         //     reversenode=reversenode->next;
-         // }
- while(reversenode)
- {
-     if(reversenode->val!=temp->val)
-     {
-         cout << reversenode->val<<" "<<temp->val<<endl;
-       
-          return false;
-     }
-     else{
-         reversenode=reversenode->next;
-         temp=temp->next;
-     }
- }
+        temp = head;
+        ListNode *reversenode = reverse(middle);
+
+        while (reversenode)
+        {
+            if (reversenode->val != temp->val)
+            {
+
+                return false;
+            }
+            else
+            {
+                reversenode = reversenode->next;
+                temp = temp->next;
+            }
+        }
         return true;
     }
 };
