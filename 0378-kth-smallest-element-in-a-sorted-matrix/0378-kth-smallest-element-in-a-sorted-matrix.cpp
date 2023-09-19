@@ -2,18 +2,20 @@ class Solution {
 public:
     int kthSmallest(vector<vector<int>>& matrix, int k) {
         
-     priority_queue<int>pq;
+   vector<int>vec;
         for(auto elem : matrix)
         {
             for(auto elem1 : elem)
             {
-                pq.push(elem1);
-                 if(k<pq.size())
-                 {
-                     pq.pop();
-                 }
+                vec.push_back(elem1);
             }
         }
-         return pq.top();
+        
+        sort(vec.begin(),vec.end());
+        for(auto elem : vec)
+        {
+            cout <<elem<< " ";
+        }
+         return vec[k-1];
     }
 };
