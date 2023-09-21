@@ -1,20 +1,22 @@
 class Solution {
 public:
-    vector<int> storeAllCommonFactor ( int num)
+    void storeAllCommonFactor ( int num, vector<int>&nums,int idx)
     {
-         vector<int>ans;
-        for(int i =1;i<=num;i++)
-        {
-             if(num%i==0)
-             {
-                 ans.push_back(i);
-             }
-        }
-         return ans ;
+         if(idx>num)
+         {
+              return ;
+         }
+         if(num%idx==0)
+         {
+             nums.push_back(idx);
+         }
+        storeAllCommonFactor(num,nums,idx+1);
     }
     int commonFactors(int a, int b) {
-        vector<int>facta=storeAllCommonFactor(a);
-             vector<int>factb=storeAllCommonFactor(b);
+        vector<int>facta;
+        storeAllCommonFactor(a,facta,1);
+             vector<int>factb;
+        storeAllCommonFactor(b,factb,1);
         
         unordered_map<int,int>mp; 
          for(auto elem : facta)
