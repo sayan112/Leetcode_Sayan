@@ -1,32 +1,36 @@
-class Solution
-{
-    public:
-        void sortColors(vector<int> &nums)
-        {
-
-           	//            sort(nums.begin(),nums.end());
-           	// O(N*logN)
-
-            int start = 0;
-            int high = nums.size() - 1;
-            int mid = 0;
-            while (high >= mid)
-            {
-                if (nums[mid] == 1)
-                {
-                    mid++;
-                }
-                else if (nums[mid] == 0)
-                {
-                    swap(nums[start], nums[mid]);
-                    start++;
-                    mid++;
-                }
-                else
-                {
-                    swap(nums[mid], nums[high]);
-                    high--;
-                }
-            }
-        }
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+         int zerocount=0;
+         int onecount=0;
+         int twocount=0;
+      for(auto elem : nums)
+      {
+          if(elem==0)
+          {
+              zerocount++;
+          }
+          else if(elem==1)
+          {
+              onecount++;
+          }
+          else{
+              twocount++;
+          }
+      }
+         nums.clear();
+         while(zerocount--)
+         {
+             nums.push_back(0);
+         }
+                 while(onecount--)
+         {
+             nums.push_back(1);
+         }
+                 while(twocount--)
+         {
+             nums.push_back(2);
+         }
+        
+    }
 };
