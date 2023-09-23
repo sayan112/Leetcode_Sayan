@@ -1,36 +1,26 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-         int zerocount=0;
-         int onecount=0;
-         int twocount=0;
-      for(auto elem : nums)
-      {
-          if(elem==0)
-          {
-              zerocount++;
-          }
-          else if(elem==1)
-          {
-              onecount++;
-          }
-          else{
-              twocount++;
-          }
-      }
-         nums.clear();
-         while(zerocount--)
+        int low=0;
+         int mid=0;
+         int high=nums.size()-1;
+         while(mid<=high)
          {
-             nums.push_back(0);
+             if(nums[mid]==0)
+             {
+                 swap(nums[mid],nums[low]);
+                 mid++;
+                 low++;
+             }
+             else if(nums[mid]==1)
+             {
+                 mid++;
+             }
+             else{
+                 swap(nums[mid],nums[high]);
+                 high--;
+             }
          }
-                 while(onecount--)
-         {
-             nums.push_back(1);
-         }
-                 while(twocount--)
-         {
-             nums.push_back(2);
-         }
-        
+         
     }
 };
