@@ -1,25 +1,22 @@
-class Solution
-{
-    public:
-        void generateallsubsequence(vector<int> &nums, vector<vector< int >> &ans, vector< int >&subset, int idx, int size)
-        {
-            if (idx == size)
-            {
-                ans.push_back(subset);
-                return;
-            }
-            subset.push_back(nums[idx]);
-            generateallsubsequence(nums, ans, subset, idx + 1, size);
-            subset.pop_back();
-            generateallsubsequence(nums, ans, subset, idx + 1, size);
-        }
-    vector<vector < int>> subsets(vector<int> &nums)
-    {
-        vector<vector < int>> ans;
-        vector<int> subset;
-        int idx = 0;
-        int n = nums.size();
-        generateallsubsequence(nums, ans, subset, idx, n);
-        return ans ;
+class Solution {
+public:
+     void generateAllSubsets (vector<int>& nums , int idx,  vector<int>&vec,    vector<vector<int>>&ans)
+     {
+         if(idx==nums.size())
+         {
+             ans.push_back(vec);
+             return;
+         }
+         vec.push_back(nums[idx]);
+         generateAllSubsets(nums,idx+1,vec,ans);
+         vec.pop_back();
+            generateAllSubsets(nums,idx+1,vec,ans);
+     }
+    vector<vector<int>> subsets(vector<int>& nums) {
+         int idx =0;
+          vector<int>vec;
+          vector<vector<int>>ans;
+        generateAllSubsets(nums,idx,vec,ans);
+         return ans;
     }
 };
