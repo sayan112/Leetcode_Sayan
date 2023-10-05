@@ -1,40 +1,35 @@
 class Solution {
 public:
-    string addStrings(string nums1, string nums2) {
-        reverse(nums1.begin(),nums1.end());
-        reverse(nums2.begin(),nums2.end());
-         int sizenum1=nums1.size()-1;
-         int sizenum2=nums2.size()-1;
-         int carry=0;
-         string need ;
-        //3 2 1 // size->3
-        //1 1 // size->2
-         int itr1=0;
-         int itr2=0;
-        
-        while((itr1<=sizenum1)||(itr2<=sizenum2)||carry)
-        {
-            
+    string addStrings(string num1, string num2) {
+        reverse(num1.begin(),num1.end());
+          reverse(num2.begin(),num2.end());
+         int ptr1=0;
+         int ptr2=0;
+     string ans;
+        int carry=0;
+         while(ptr1<num1.size()||ptr2<num2.size()||carry!=0)
+         {
              int sum =0;
-             if(itr1<=sizenum1)
-             {
-                 sum+=nums1[itr1]-'0';
-                 itr1++;
-             }
-                if(itr2<=sizenum2)
-             {
-                 sum+=nums2[itr2]-'0';
-                 itr2++;
-             }
-            if(carry)
-            {
-                sum+=carry;
-            }
+              if(ptr1<num1.size())
+              {
+                       sum+=num1[ptr1]-'0';
+                  ptr1++;
+              }
              
-            need+=(sum%10)+'0';
-                carry=sum/10;
-        }
-        reverse(need.begin(),need.end());
-         return need ;
+                   if(ptr2<num2.size())
+              {
+                       sum+=num2[ptr2]-'0';
+                  ptr2++;
+              }
+              if(carry)
+              {
+                  sum+=carry;
+              }
+             ans+=sum%10+'0';
+           carry=sum/10;
+         }
+         reverse(ans.begin(),ans.end());
+        return ans;
+        
     }
 };
