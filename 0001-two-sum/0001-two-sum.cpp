@@ -12,7 +12,7 @@ public:
              {
                  ans.push_back(i);
                   ans.push_back(mp[search]);
-               break;
+         
              }
             mp[nums[i]]=i;
         }
