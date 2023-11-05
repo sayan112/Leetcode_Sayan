@@ -1,40 +1,37 @@
-class Solution {
-public:
-    int strStr(string haystack, string needle) {
- 
-        
-        
-         int n=haystack.size();
-         int m = needle.size();
-         if(m==0)
-         {
-              return 0;
-         }
-        int i =0;
-         int j =0;
-        
-        while(i<n)
+class Solution
+{
+    public:
+        int strStr(string haystack, string needle)
         {
-            if(haystack[i]==needle[j])
+
+            for (int i = 0; i < haystack.size(); i++)
             {
-              int idx =i;
-                 int k =i;
-                 while(haystack[k]==needle[j]&& j<m)
-                 {
-                     k++;
-                     j++;
-                 }
-                 if(j==m)
-                 {
-                      return idx;
-                 }
-                else{
-                      j=0;
+                if (needle[0] == haystack[i])
+                {
+                    int start1 = i + 1;
+                    int start2 = 1;
+                     bool check=true;
+                    cout <<start1<<" "<< start2<<endl;
+                    while (needle.size() != start2)
+                    {
+                        if (needle[start2] != haystack[start1])
+                        {
+                             cout << needle[start2]<<" "<< haystack[start1] ; 
+                            check=false;
+                            break;
+                            
+                            
+                        }
+                        start1++;
+                        start2++;
+                    }
+                     if(check)
+                     {
+                           return i;
+                     }
+                
                 }
             }
-           
-            i++;
+             return -1;
         }
-         return -1;
-    }
 };
