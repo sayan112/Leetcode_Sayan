@@ -12,26 +12,23 @@
 class Solution
 {
     public:
-        int maxiPathSum(TreeNode *node, int &maxi)
+        int maxPath(TreeNode *root,int &maxiPathsum)
         {
-            if (!node)
+            if (!root)
             {
                 return 0;
             }
-            int leftsum = max(0,maxiPathSum(node->left, maxi));
-            int rightsum = max(0,maxiPathSum(node->right, maxi));
-            maxi = max(maxi, (node->val + leftsum + rightsum));
-            cout << (node->val + leftsum + rightsum)<<endl;
-            return (node->val + max(leftsum, rightsum));
+
+            int leftpath = max(0,maxPath(root->left,maxiPathsum));
+            int rightpath =max(0, maxPath(root->right,maxiPathsum));
+             maxiPathsum=max(maxiPathsum,(root->val+leftpath+rightpath));
+            return root->val + max(leftpath, rightpath);
         }
     int maxPathSum(TreeNode *root)
     {
-        if (!root)
-        {
-            return 0;
-        }
-        int maxi = INT_MIN;
-        maxiPathSum(root, maxi);
-        return maxi ;
+        int maxiPathsum=INT_MIN;
+
+maxPath(root,maxiPathsum);
+              return   maxiPathsum;
     }
 };
