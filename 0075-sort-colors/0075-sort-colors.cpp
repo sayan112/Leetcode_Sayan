@@ -1,35 +1,34 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-     
-         vector<int>ans;
-        for(auto elem : nums)
+        int count0 =0;
+         int count1=0;
+         int count2=0;
+     for(auto elem : nums)
+     {
+          if(elem==0)
+          {
+              count0++; 
+          }else if(elem==1)
+          {
+              count1++;
+          }
+         else{
+              count2++;
+         }
+     }
+         nums.clear();
+        while(count0--)
         {
-            if(elem==0)
-            {
-                ans.push_back(elem);
-            }
+            nums.push_back(0);
         }
-          for(auto elem : nums)
+            while(count1--)
         {
-            if(elem==1)
-            {
-                ans.push_back(elem);
-            }
+            nums.push_back(1);
         }
-          for(auto elem : nums)
+            while(count2--)
         {
-            if(elem==2)
-            {
-                ans.push_back(elem);
-            }
-        }
-        nums.clear();
-          for(auto elem : ans)
-        {
-              
-                nums.push_back(elem);
-            
+            nums.push_back(2);
         }
     }
 };
