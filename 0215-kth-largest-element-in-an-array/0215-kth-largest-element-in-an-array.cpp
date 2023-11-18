@@ -5,11 +5,14 @@ public:
          for(auto elem :nums)
          {
              pq.push(elem);
-             if(pq.size()>k)
-             {
-                 pq.pop();
-             }
+              if(pq.size()>k)
+              {
+                  pq.pop();
+              }
+        
          }
+        
+     
          return pq.top();
     }
 };
