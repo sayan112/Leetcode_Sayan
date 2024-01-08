@@ -1,29 +1,30 @@
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
+         int zerocount=0;
         
-         int zero=0;
-             vector<int>ans;
+        for(auto elem : nums)
+        {
+            if(elem==0)
+            {
+                zerocount++;
+            }
+        }
+        
+      vector<int>nonzeroelem;
          for(auto elem : nums)
          {
-              if(elem==0)
-              {
-                  zero++;
-              }
-             else{
-                 ans.push_back(elem);
+             if(elem!=0)
+             {
+                 nonzeroelem.push_back(elem);
              }
          }
- while(zero--)
- {
-     ans.push_back(0);
- }
-         int idx =0;
-         for(auto &elem : nums)
-         {
-             elem=ans[idx];
-             idx++;
-         }
-     
+        while(zerocount--)
+        {
+             nonzeroelem.push_back(0);
+        }
+        nums.clear();
+        nums=nonzeroelem;
+        
     }
 };
