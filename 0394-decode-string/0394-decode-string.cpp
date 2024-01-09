@@ -3,7 +3,7 @@ class Solution
     public:
         string Decode(string &s, int &i)
         {
-            cout<< i<<" ";
+
             string result;
             while (i < s.size() && s[i] != ']')
             {
@@ -15,16 +15,16 @@ class Solution
                         k = k *10 + s[i] - '0';
                         i++;
                     }
-                    cout << k<<endl;
+
                     i++;
                     string r = Decode(s, i);
                     while (k > 0)
                     {
                         result += r;
-                  
+
                         k--;
                     }
-                          i++;
+                    i++;
                 }
                 else
                 {
