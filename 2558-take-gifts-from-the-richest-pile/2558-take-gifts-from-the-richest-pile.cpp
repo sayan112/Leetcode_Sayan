@@ -22,6 +22,7 @@ class Solution
                 sum += pq.top();
                 pq.pop();
             }
+            gifts.clear();
 
             return sum;
         }
