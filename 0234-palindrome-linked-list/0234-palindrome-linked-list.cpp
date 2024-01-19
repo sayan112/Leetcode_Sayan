@@ -11,21 +11,19 @@
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
-        string s;
-        while(head)
+        ListNode*List1=head;
+        string need;
+        while(List1)
         {
-              s+=head->val+'0';
-            head=head->next;
-          
+            need+=List1->val+'0';
+            List1=List1->next;
         }
-        string need = s;
-         reverse(need.begin(),need.end());
-         if(need==s)
+         string revneed=need;
+        reverse(revneed.begin(),revneed.end());
+         if(revneed==need)
          {
               return true;
          }
-        else{
-             return false;
-        }
+         return false;
     }
 };
