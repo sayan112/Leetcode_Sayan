@@ -1,59 +1,60 @@
 class Solution {
 public:
-     int searchStartidx (vector<int>&nums,int target)
-     {
-         int start =0;
+      int firstPosition (vector<int>& nums, int target)
+      {
+           int start=0;
           int end = nums.size()-1;
-         int ansidx=-1;
-          while(end>=start)
-          {
-               int mid = start+(end-start)/2;
-               if(target==nums[mid])
-               {
-                   ansidx=mid;
-                   end = mid-1;
+           int ans=-1;
+           while(end>=start)
+           {
+                int mid= (end+start)/2;
+                if(nums[mid]==target)
+                {
+                    ans=mid;
+                     end=mid-1;
+                }
+                else if ( nums[mid]>target)
+                {
+                    end=mid-1;
+                }
+               else{
+                    start=mid+1;
                }
-              else if (target>nums[mid])
-              {
-                start=mid+1;   
-              }
-              else{
-                  end=mid-1;
-              }
-          }
-          return ansidx;
-     }
-    
-         int searchEndidx (vector<int>&nums,int target)
-     {
-         int start =0;
+           }
+           return ans;
+          
+      }
+          int LastPosition (vector<int>& nums, int target)
+      {
+           int start=0;
           int end = nums.size()-1;
-         int ansidx=-1;
-          while(end>=start)
-          {
-               int mid = start+(end-start)/2;
-               if(target==nums[mid])
-               {
-                   ansidx=mid;
-  start=mid+1; 
+           int ans=-1;
+           while(end>=start)
+           {
+                int mid= (end+start)/2;
+                if(nums[mid]==target)
+                {
+                    ans=mid;
+                     start=mid+1;
+                }
+                else if ( nums[mid]>target)
+                {
+                    end=mid-1;
+                }
+               else{
+                    start=mid+1;
                }
-              else if (target>nums[mid])
-              {
-                start=mid+1;   
-              }
-              else{
-                  end=mid-1;
-              }
-          }
-          return ansidx;
-     }
+           }
+           return ans;
+          
+      }
     vector<int> searchRange(vector<int>& nums, int target) {
          vector<int>ans;
-        int startingIdx = searchStartidx(nums,target);
-            int endingidx = searchEndidx(nums,target);
-ans.push_back(startingIdx);
-        
-ans.push_back(endingidx);
+         int firstpos=firstPosition(nums,target);
+          int laspos=LastPosition(nums,target);
+        ans.push_back(firstpos);
+         ans.push_back(laspos);
          return ans;
+        
     }
 };
