@@ -1,56 +1,46 @@
 class Solution
 {
     public:
-        void merge(vector<int> &nums, int start, int mid, int end)
+        int partiion(vector<int> &nums, int low, int high)
         {
-            vector<int> temp;
-            int left = start;
-            int right = mid + 1;
-            while (left <= mid && right <= end)
+            int pivot = nums[low];
+            int i = low;
+            int j = high;
+            while (i < j)
             {
-                if (nums[left] <= nums[right])
+                // find the first greater elem than pivot 
+                while (pivot >= nums[i] && i < high )
                 {
-                    temp.push_back(nums[left]);
-                    left++;
+                    i++;
                 }
-                else
+                   // find the first smaller  elem than pivot 
+                while (pivot < nums[j] && j > low )
                 {
-                    temp.push_back(nums[right]);
-                    right++;
+                    j--;
+                }
+
+                if (i < j)
+                {
+                    swap(nums[i], nums[j]);
                 }
             }
-            while (left <= mid)
-            {
-                temp.push_back(nums[left]);
-                   left++;
-            }
-            while (right <= end)
-            {
-                temp.push_back(nums[right]);
-                 right++;
-            }
-              for(int i =start;i<=end;i++)
-              {
-                  nums[i]=temp[i-start];
-              }
-          
+            swap(nums[low], nums[j]);
+            return j;
         }
-    void mergeTheArray(vector<int> &nums, int start, int end)
+    void quicksort(vector<int> &nums, int low, int high)
     {
-        if (start == end)
+        if (low >= high)
         {
             return;
         }
-         int mid = (start+end)/2;
-        mergeTheArray(nums, start, mid);
-        mergeTheArray(nums, mid + 1, end);
-        merge(nums, start, mid, end);
+        int pivot = partiion(nums, low, high);
+        quicksort(nums, low, pivot - 1);
+        quicksort(nums, pivot + 1, high);
     }
     vector<int> sortArray(vector<int> &nums)
     {
-        int start = 0;
-        int end = nums.size() - 1;
-        mergeTheArray(nums, start, end);
-         return nums;
+
+        quicksort(nums, 0, nums.size() - 1);
+        return nums;
     }
 };
