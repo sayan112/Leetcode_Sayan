@@ -1,20 +1,22 @@
 class Solution
 {
     public:
-        int subarraySum(vector<int> &A, int k)
+        int subarraySum(vector<int> &num, int k)
         {
-
-            unordered_map<int,int>mp;
-             mp[0]=1;
-             int sum =0;
              int count =0;
-             for(auto elem : A)
-             { 
-                 sum+=elem;
-                  count+=mp[sum-k];
-                  mp[sum]++;
-                 
-             }
-             return count ;
+                for(int i=0;i<num.size();i++)
+                {
+                     int sum =0;
+                           for(int j=i;j<num.size();j++)
+                {
+                    sum+=num[j];
+                                if(sum==k)
+                     {
+                         count++;
+                     }
+                }
+                    
+                }
+             return count; 
         }
 };
