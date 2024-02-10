@@ -1,101 +1,74 @@
-class Solution
-{
-    private:
-     bool isSafe ( int row , int col , vector<string> &board  , int n  )
-     {
-          // check the diagonal upper side is there any Q 
-         
-          // `
-          //    `
-          //      `
-          //        ` 
-         int checkrow=row;
-         int checkcol=col;
-         while(row>=0 && col>=0 )
-         {
+class Solution {
+public:
+      bool isSafe ( int row , int col ,vector<string>&board , int n   )
+      {
+           int duprow=row;
+           int dupcol=col;
+          while(row>=0&&col>=0)
+          {
              if(board[row][col]=='Q')
              {
                  return false;
-                  
              }
-            row--;
-            col--;
-             
-         }
-         
-           row=checkrow;
-          col=checkcol; 
-         
-      
-         
-          // moving to the left and trying to find Q 
-         
-         // `   `   `   `  
-         while(col>=0)
-         {
-             if(board[row][col]=='Q')
-             {
-                 return false;
-                  
-             }
-           
-           col--;
-             
-         }
-         
-         
-            row=checkrow;
-          col=checkcol;
-             // check the diagonal lower side is there any Q 
-         
-          // `
-          //    `
-          //      `
-          //        ` down 
-         
-              while(row<n && col>=0 )
-         {
-             if(board[row][col]=='Q')
-             {
-                 return false;
-                  
-             }
-             row++;
-           col--;
-             
-         }
-          return true;
+               row--;
+              col--;
               
-     }
-        void solve(vector<string> &board, int col, int n, vector<vector< string>> &ans) {
-            if(col==n)
-            {
-                ans.push_back(board);
-                 return ;
-            }
-             for(int row=0;row<n;row++)
+          }
+           row=duprow;
+          col=dupcol;
+               while(col>=0)
+          {
+             if(board[row][col]=='Q')
              {
-                 if(isSafe(row,col,board,n))
-                 {
-                     board[row][col]='Q';
-                     solve(board,col+1,n,ans);
-                        board[row][col]='.';
-                 }
-                 
+                 return false;
              }
-        }
-    public:
-
-        vector<vector < string>> solveNQueens(int n)
+                col--;
+          }
+          
+          
+             row=duprow;
+          col=dupcol; 
+                         while(row<n&&col>=0)
+          {
+             if(board[row][col]=='Q')
+             {
+                 return false;
+             }
+                             row++;
+                col--;
+          }
+          return true;
+      }
+     void solve ( int col ,  vector<string>&board ,   vector<vector<string>>&ans , int n   )
+     {
+         if(col==n) // when things get out of the bound then we are sure that we got one combination 
+         {
+             ans.push_back(board);
+              return;
+         }
+         for(int row =0;row<n;row++)
+         {
+             if(isSafe(row,col,board,n))
+             {
+                 board[row][col]='Q';
+                 solve(col+1,board,ans,n);
+                 board[row][col]='.';
+             }
+         }
+     }
+    vector<vector<string>> solveNQueens(int n) {
+            vector<vector<string>>ans;
+         vector<string>board;
+         string blank;
+         for(int i=0;i<n;i++)
+         {
+             blank+='.';
+         }
+        for(int i=0;i<n;i++)
         {
-            vector<vector < string>> ans;
-            vector<string> board(n);
-            string s(n, '.');
-            for (auto &elem: board)
-            {
-                elem = s;
-            }
-            solve(board, 0, n, ans);
-            return ans;
+            board.push_back(blank);
         }
+        solve(0,board,ans,n);
+         return ans;
+    }
 };
