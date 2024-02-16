@@ -11,40 +11,32 @@
  */
 class Solution {
 public:
-     void binaryTreePath (TreeNode* root , string need , vector<string>&ans  )
+     void binaryTreePath (TreeNode* root , vector<string>&ans ,       string path )
      {
-         if(!root)
-         {
-             return ;
-         }
-          if(!root->left && !root->right)
+          if(!root)
           {
-   
-          need+=to_string(root->val);
-              ans.push_back(need);
-               return ;
+              return ; 
+               
           }
+         if(root->left ==NULL && root->right==NULL)
+         {
+              path+=to_string(root->val);
+          
+            ans.push_back(path);
+             
+         }
+          path+=to_string(root->val);
+           path+="->";
+         binaryTreePath(root->left , ans , path );
+       
+         binaryTreePath(root->right , ans , path );
          
-          need+=to_string(root->val);
-            need+="->";
-         
-         
-         binaryTreePath(root->left,need,ans);
-                  
-         binaryTreePath(root->right,need,ans);
-      
          
      }
     vector<string> binaryTreePaths(TreeNode* root) {
-     
-          vector<string>ans;
-         string need;
-        
-        binaryTreePath(root,need,ans);
-         for(auto elem : ans )
-         {
-              cout << elem <<" ";
-         }
-         return ans ;
+         vector<string>ans;
+      string path ;
+         binaryTreePath(root,ans,path);
+         return ans;
     }
 };
