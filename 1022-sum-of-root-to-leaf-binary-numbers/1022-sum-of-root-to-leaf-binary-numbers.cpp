@@ -23,7 +23,10 @@ class Solution
              if(!root->left && !root->right)
              {
                 need+=root->val+'0';
+                 // converting binary to decimal 
+                  cout << stoi(need,0,2) <<endl;
                  sum+=stoi(need,0,2);
+                 
                   return;
              }
              need+=root->val+'0';
