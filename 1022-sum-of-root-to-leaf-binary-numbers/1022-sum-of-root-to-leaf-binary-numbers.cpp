@@ -1,26 +1,41 @@
+/**
+ *Definition for a binary tree node.
+ *struct TreeNode {
+ *    int val;
+ *    TreeNode * left;
+ *    TreeNode * right;
+ *    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ *};
+ */
 class Solution
 {
     public:
-     int ans =0;
-    void sumroottoleaf(TreeNode *root, string vec)
-    {
-        if (!root)
+
+        void sum_root_to_leaf(TreeNode *root, string need,int &sum)
         {
-            return;
+            if(!root)
+            {
+                 return ; 
+                
+            }
+             if(!root->left && !root->right)
+             {
+                need+=root->val+'0';
+                 sum+=stoi(need,0,2);
+                  return;
+             }
+             need+=root->val+'0';
+             
+            sum_root_to_leaf(root->left , need , sum );
+            sum_root_to_leaf(root->right , need , sum);
         }
-        vec += (root->val + '0');
-        if (root->left == NULL && root->right == NULL)
-        {
-       ans+= stoi(vec, 0, 2);
-        }
-        sumroottoleaf(root->left, vec);
-        sumroottoleaf(root->right, vec);
-    }
     int sumRootToLeaf(TreeNode *root)
     {
-        string vec;
-        sumroottoleaf(root, vec);
-     
-        return ans;
+        string need;
+int sum=0;
+        sum_root_to_leaf(root,need , sum);
+         return sum;
     }
 };
