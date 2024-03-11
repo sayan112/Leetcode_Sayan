@@ -1,21 +1,19 @@
-class Solution
-{
-    public:
-        bool isPalindrome(int x)
+class Solution {
+public:
+    bool isPalindrome(int x) {
+     
+         string str= to_string (x);
+         int start =0;
+         int end = str.size()-1;
+        while(end>=start)
         {
-
-            string need = to_string(x);
-            int start = 0;
-            int end = need.size() - 1;
-            while (end >= start)
-            {
-                if (need[start] != need[end])
-                {
-                    return false;
-                }
-                end--;
-                start++;
-            }
-             return true;
+             if(str[end]!=str[start])
+             {
+                  return false;
+             }
+            end--;
+            start++;
         }
+         return true;
+    }
 };
